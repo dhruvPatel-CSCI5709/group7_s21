@@ -1,0 +1,195 @@
+.root-profile-container {
+  display: inline-flex;
+  width: 75%;
+}
+
+.profile-info-finance-container {
+  flex-grow: 9;
+}
+
+.profile-info-container {
+  width: 78%;
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.profile-info-left {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-right: 1px solid #d3d3d3;
+}
+
+.profile-info-left-image {
+  display: flex;
+  flex-grow: 3;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  height: 130px;
+  width: 130px;
+  border-radius: 60px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.profile-info-left-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-evenly;
+}
+
+.profile-info-left-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.profile-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-grow: 4;
+  padding-left: 10px;
+}
+
+.profile-info-right-item {
+  width: 100%;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.profile-info-right-label {
+  width: 30%;
+  float: left;
+  font-weight: 500;
+}
+
+.profile-info-right-value {
+  width: 50%;
+  margin-left: 30%;
+}
+
+.finance-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  gap: 5px;
+}
+
+.finance-info-card-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.finance-info-cards {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.profile-info-card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.profile-info-card-type {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #808080;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.finance-info-root-accounts {
+  margin-top: 20px;
+  gap: 25px;
+}
+
+.rbc-bank-account-container {
+  display: flex;
+  flex-direction: column;
+  /* border-bottom: 2px solid #e2e2e2; */
+}
+
+.rbc-bank-accounts-list {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  padding-left: 15px;
+}
+
+.bank-rbc-image {
+  height: 80px;
+  width: 80px;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  opacity: 0.8;
+}
+
+.bank-details {
+  padding-bottom: 5px;
+  /* padding-left: 25px; */
+}
+
+.finance-info-card-banks {
+  display: flex;
+  /* width: 80%; */
+  flex-direction: row;
+}
+
+.finance-account-label {
+  font-size: 5px;
+  font-weight: 400;
+  padding-left: 200px;
+  /* border-top-right-radius: 1px solid #808080; */
+}
+
+.bank-primary-account {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.bank-account-image {
+  padding-top: 10px;
+}
+
+.bank-secondary-lists {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.bank-secondary-list-begins {
+  border-bottom: 2px solid #e2e2e2;
+}

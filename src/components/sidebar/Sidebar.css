@@ -1,0 +1,25 @@
+.root-sidebar {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  width: 20%;
+  float: left;
+}
+
+.button-dashboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  background-color: initial;
+  /* color: #808080; */
+  font-size: 16px;
+}
+
+.button-dashboard:hover {
+  background: #d3d3d3;
+}
