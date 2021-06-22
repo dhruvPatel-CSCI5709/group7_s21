@@ -2,9 +2,12 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 15px;
+  padding-right: 15px;
   background-color: #2a95bf;
   color: white;
   font-size: 24px;
   font-weight: 400;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  display: flex;
+  justify-content: space-between;
 }

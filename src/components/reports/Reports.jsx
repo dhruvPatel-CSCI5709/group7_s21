@@ -18,6 +18,8 @@ import {
 import { daysData, monthlyData } from "./data";
 import RadioGroup from "../../reusables/RadioGroup/RadioGroup";
 import AnimatedNumber from "animated-number-react";
+import Sidebar from "../sidebar/Sidebar";
+import Header from "../header/Header";
 
 const cx = c.bind(styles);
 
@@ -149,94 +151,98 @@ const Reports = () => {
   };
 
   return (
-    <div className={cx("main-container")}>
-      <h1 className={cx("heading")}>Statistical Reports</h1>
-      <div className={cx("print-button")}>
-        <ReactToPrint
-          trigger={() => (
-            <Button disabled={!reportType} icon={<PrinterOutlined />}>
-              Print To PDF
-            </Button>
-          )}
-          content={() => reportComponent.current}
-        ></ReactToPrint>
-      </div>
-      <div className={cx("dropdowns")}>
-        <div>
-          <Dropdown
-            value={reportType}
-            options={reportTypeMenu.options}
-            placeholder={reportTypeMenu.placeholder}
-            onChange={(value) => setReportType(value)}
-          />
+    <div>
+      <Header title="Statistical Reports" />
+      <Sidebar />
+      <div className={cx("main-container")}>
+        {/* <h1 className={cx("heading")}>Statistical Reports</h1> */}
+        <div className={cx("print-button")}>
+          <ReactToPrint
+            trigger={() => (
+              <Button disabled={!reportType} icon={<PrinterOutlined />}>
+                Print To PDF
+              </Button>
+            )}
+            content={() => reportComponent.current}
+          ></ReactToPrint>
         </div>
-        {reportType === reportTypeMenu.constants.CATEGORY && (
+        <div className={cx("dropdowns")}>
           <div>
             <Dropdown
-              value={month}
-              onChange={(value) => setMonth(value)}
-              placeholder={monthlyData.placeholder}
-              options={monthMenu.options}
+              value={reportType}
+              options={reportTypeMenu.options}
+              placeholder={reportTypeMenu.placeholder}
+              onChange={(value) => setReportType(value)}
             />
           </div>
-        )}
-        {reportType === reportTypeMenu.constants.TIMELINE && (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Dropdown
-              value={timeline}
-              onChange={(value) => setTimeline(value)}
-              placeholder={timelineReportMenu.placeholder}
-              options={timelineReportMenu.options}
-            />
-            {timeline === timelineReportMenu.constants.DAYS && (
+          {reportType === reportTypeMenu.constants.CATEGORY && (
+            <div>
               <Dropdown
-                value={dayTimeline}
-                onChange={(value) => setDayTimeline(value)}
-                placeholder={dayTimelineReportMenu.placeholder}
-                options={dayTimelineReportMenu.options}
-              />
-            )}
-          </div>
-        )}
-      </div>
-      {reportType && dataSets ? (
-        <div ref={reportComponent}>
-          {highestValue && (
-            <div className={cx("highest-value")}>
-              <span>{highestValue.label}: </span>
-              <AnimatedNumber
-                className={cx("currency")}
-                value={highestValue.max}
-                duration={1000}
-                formatValue={(value) => "$" + Number(value).toFixed(2)}
+                value={month}
+                onChange={(value) => setMonth(value)}
+                placeholder={monthlyData.placeholder}
+                options={monthMenu.options}
               />
             </div>
           )}
-          <CreateChart
-            type={chartType}
-            options={chartData.options}
-            data={dataSets}
-          />
           {reportType === reportTypeMenu.constants.TIMELINE && (
-            <RadioGroup
-              className={cx("chart-type")}
-              options={chartTypeRadio.options}
-              value={chartType}
-              onChange={(e) => setChartType(e.target.value)}
-            />
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Dropdown
+                value={timeline}
+                onChange={(value) => setTimeline(value)}
+                placeholder={timelineReportMenu.placeholder}
+                options={timelineReportMenu.options}
+              />
+              {timeline === timelineReportMenu.constants.DAYS && (
+                <Dropdown
+                  value={dayTimeline}
+                  onChange={(value) => setDayTimeline(value)}
+                  placeholder={dayTimelineReportMenu.placeholder}
+                  options={dayTimelineReportMenu.options}
+                />
+              )}
+            </div>
           )}
         </div>
-      ) : (
-        <h2 style={{ color: "#2a95bf" }}>
-          Select Report Type <SmileOutlined />
-        </h2>
-      )}
+        {reportType && dataSets ? (
+          <div ref={reportComponent}>
+            {highestValue && (
+              <div className={cx("highest-value")}>
+                <span>{highestValue.label}: </span>
+                <AnimatedNumber
+                  className={cx("currency")}
+                  value={highestValue.max}
+                  duration={1000}
+                  formatValue={(value) => "$" + Number(value).toFixed(2)}
+                />
+              </div>
+            )}
+            <CreateChart
+              type={chartType}
+              options={chartData.options}
+              data={dataSets}
+            />
+            {reportType === reportTypeMenu.constants.TIMELINE && (
+              <RadioGroup
+                className={cx("chart-type")}
+                options={chartTypeRadio.options}
+                value={chartType}
+                onChange={(e) => setChartType(e.target.value)}
+              />
+            )}
+          </div>
+        ) : (
+          <h2 style={{ color: "#2a95bf" }}>
+            Select Report Type <SmileOutlined />
+          </h2>
+        )}
+      </div>
     </div>
   );
 };

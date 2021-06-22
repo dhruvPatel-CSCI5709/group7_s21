@@ -9,6 +9,8 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import AccountBalanceTwoToneIcon from "@material-ui/icons/AccountBalanceTwoTone";
 import { useHistory } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
+import Header from "../header/Header";
 
 export default function Profile() {
   const history = useHistory();
@@ -20,6 +22,8 @@ export default function Profile() {
 
   return (
     <div>
+      <Header />
+      <Sidebar />
       <div className="root-profile-container">
         <div className="profile-info-finance-container">
           <div className="profile-info-container">
