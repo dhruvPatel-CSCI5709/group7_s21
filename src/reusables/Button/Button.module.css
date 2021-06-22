@@ -1,0 +1,21 @@
+button.app-button {
+  background: #2a95bf;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  min-height: 40px;
+  box-shadow: 7px 6px 28px 1px rgb(0 0 0 / 24%);
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+button.app-button:hover {
+  background: white;
+  color: #2a95bf;
+  border-color: #2a95bf;
+}
+
+button.app-button:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
