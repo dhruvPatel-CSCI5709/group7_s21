@@ -1,0 +1,22 @@
+.btn-primary {
+  color: #fff;
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+.icon-img {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 2rem;
+}
+.reset {
+  color: black;
+}
+a {
+  text-decoration: none;
+}
+.error {
+  color: #cc0000;
+  margin-left: 0.8rem;
+  margin-top: 0.2rem;
+  text-align: left;
+}
