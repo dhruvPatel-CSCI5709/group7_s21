@@ -1,0 +1,12 @@
+canvas {
+  width: 20vh;
+  height: 10vh;
+}
+
+.chart-canvas {
+  border: 2px solid #808080;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgb(85 85 85) 0px 10px 50px;
+  display: block;
+}
