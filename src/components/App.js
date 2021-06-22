@@ -7,8 +7,6 @@ import IncorrectPassword from "./incorrectPassword/IncorrectPassword";
 import Profile from "./profile/Profile";
 import Dashboard from "./dashboard/Dashboard";
 import Reports from "./reports/Reports";
-import Header from "./header/Header";
-import Sidebar from "./sidebar/Sidebar";
 
 export default function PermanentDrawerLeft() {
   const history = useHistory();
@@ -18,15 +16,13 @@ export default function PermanentDrawerLeft() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
-        <Sidebar />
         <Route exact path="/" component={HomePage} />
         <Route path="/deleteProfile" component={DeleteProfile}></Route>
-        <Route path="/Profile" component={Profile}></Route>
+        <Route path="/profile" component={Profile}></Route>
         <Route path="/homePage" component={HomePage}></Route>
-        <Route path="/Dashboard" component={Dashboard}></Route>
+        <Route path="/dashboard" component={Dashboard}></Route>
         <Route path="/incorrectPassword" component={IncorrectPassword}></Route>
-        <Route path="/Reports" component={Reports}></Route>
+        <Route path="/reports" component={Reports}></Route>
       </div>
     </BrowserRouter>
   );
