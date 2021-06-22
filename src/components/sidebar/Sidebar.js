@@ -63,8 +63,8 @@ export default function Sidebar() {
           key={list.id}
           className="button-dashboard"
           style={{
-            backgroundColor: list.title === path ? "#2a95bf" : "",
-            color: list.title === path ? "white" : "#808080",
+            backgroundColor: list.route === path ? "#2a95bf" : "",
+            color: list.route === path ? "white" : "#808080",
           }}
           onClick={() => {
             handleRoute(list.title, list.route);
