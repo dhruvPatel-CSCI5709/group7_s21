@@ -1,0 +1,18 @@
+.dropdown :global .ant-select {
+  min-width: 100px;
+  margin: 2px;
+  font-size: 16px;
+}
+
+.dropdown
+  :global
+  .ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  color: #2a95bf;
+  border: 1px solid #2a95bf;
+  border-radius: 10px;
+}
+
+.dropdown :global .ant-select-arrow {
+  color: #2a95bf;
+}

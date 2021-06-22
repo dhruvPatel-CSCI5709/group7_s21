@@ -1,0 +1,91 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdowns {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 0px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.print-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.print-button > button {
+  background: #2a95bf;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  min-height: 40px;
+  box-shadow: 7px 6px 28px 1px rgb(0 0 0 / 24%);
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.print-button > button:hover {
+  background: white;
+  color: #2a95bf;
+  border-color: #2a95bf;
+}
+
+.print-button > button:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.highest-value {
+  text-align: center;
+  color: #2a95bf;
+}
+
+.highest-value span {
+  font-size: large;
+  font-weight: bold;
+}
+
+.highest-value span.currency {
+  font-size: 36px;
+  font-weight: bold;
+}
+.heading {
+  background: #2a95bf;
+  color: white;
+  text-align: center;
+}
+.chart-type {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.chart-type :global .ant-radio-button-wrapper {
+  color: #2a95bf;
+  font-weight: bold;
+  min-height: 40px;
+  min-width: 90px;
+  line-height: 35px;
+  font-size: 20px;
+}
+
+.chart-type :global .ant-radio-button-wrapper:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.chart-type :global .ant-radio-button-wrapper:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.highest-value
+  .chart-type
+  :global
+  .ant-radio-group-solid
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  color: #fff;
+  background: #2a95bf;
+  border-color: #2a95bf;
+  text-align: center;
+}

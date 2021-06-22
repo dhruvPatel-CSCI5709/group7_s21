@@ -3,6 +3,7 @@ import DashboardTwoToneIcon from "@material-ui/icons/DashboardTwoTone";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 import NotificationsNoneTwoToneIcon from "@material-ui/icons/NotificationsNoneTwoTone";
 import MonetizationOnTwoToneIcon from "@material-ui/icons/MonetizationOnTwoTone";
+import AssessmentIcon from "@material-ui/icons/Assessment";
 import { useHistory } from "react-router-dom";
 import "./Sidebar.css";
 
@@ -11,6 +12,7 @@ const lists = [
   { id: 2, title: "Finances", icon: <MonetizationOnTwoToneIcon /> },
   { id: 3, title: "Notifications", icon: <NotificationsNoneTwoToneIcon /> },
   { id: 4, title: "Profile", icon: <AccountBoxRoundedIcon /> },
+  { id: 5, title: "Reports", icon: <AssessmentIcon /> },
 ];
 
 export default function Sidebar() {
@@ -18,7 +20,7 @@ export default function Sidebar() {
 
   const handleRoute = (route) => {
     let path = "/" + route;
-    history.push(path);
+    history.push(path, { title: route });
   };
 
   const path = history.location.pathname.substr(1);
