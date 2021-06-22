@@ -7,6 +7,7 @@ import IncorrectPassword from "./incorrectPassword/IncorrectPassword";
 import Profile from "./profile/Profile";
 import Dashboard from "./dashboard/Dashboard";
 import Reports from "./reports/Reports";
+import Expense from "./expense/Expense";
 
 export default function PermanentDrawerLeft() {
   const history = useHistory();
@@ -23,6 +24,7 @@ export default function PermanentDrawerLeft() {
         <Route path="/dashboard" component={Dashboard}></Route>
         <Route path="/incorrectPassword" component={IncorrectPassword}></Route>
         <Route path="/reports" component={Reports}></Route>
+        <Route path="/expense" component={Expense}></Route>
       </div>
     </BrowserRouter>
   );
