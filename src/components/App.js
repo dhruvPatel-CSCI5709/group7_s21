@@ -11,7 +11,6 @@ import Header from "./header/Header";
 import Sidebar from "./sidebar/Sidebar";
 
 export default function PermanentDrawerLeft() {
-  const [title, setTitle] = useState(null);
   const history = useHistory();
   useEffect(() => {
     console.log("Page Details", history);
