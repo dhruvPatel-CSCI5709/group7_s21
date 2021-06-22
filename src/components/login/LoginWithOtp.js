@@ -70,8 +70,9 @@ const LogInWithOTP = ({ history }) => {
     e.preventDefault()
     const isValid = formValidator()
     if (isValid) {
-      history.push('/dashboard')
       setInitErrorState()
+      localStorage.setItem('loginStatus', true)
+      history.push('/dashboard')
     }
   }
 
