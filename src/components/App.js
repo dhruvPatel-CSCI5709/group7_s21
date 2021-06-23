@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Route, useHistory } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import DeleteProfile from './deleteProfile/deleteProfile'
 import HomePage from './homePage/HomePage'
@@ -9,6 +9,7 @@ import Dashboard from './dashboard/Dashboard'
 import Reports from './reports/Reports'
 import Expense from './expense/Expense'
 import Login from './login/LoginPage'
+import SetUpEMIDueDate from './notification/emi_setup'
 import Register from './register/RegisterPage'
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
       ></Route>
       <Route exact path='/reports' component={Reports}></Route>
       <Route exact path='/expense' component={Expense}></Route>
+      <Route exact path='/notifications' component={SetUpEMIDueDate} />
     </div>
   )
 }
