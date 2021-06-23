@@ -71,7 +71,7 @@ const LogInWithOTP = ({ history }) => {
     if (isValid) {
       setInitErrorState()
       localStorage.setItem('loginStatus', true)
-      history.push('/dashboard')
+      history.push('/Dashboard')
     }
   }
 
