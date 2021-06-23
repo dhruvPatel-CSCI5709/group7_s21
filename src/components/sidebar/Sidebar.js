@@ -5,6 +5,8 @@ import NotificationsNoneTwoToneIcon from "@material-ui/icons/NotificationsNoneTw
 import MonetizationOnTwoToneIcon from "@material-ui/icons/MonetizationOnTwoTone";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Icon, InlineIcon } from '@iconify/react';
+import calculatorIcon from '@iconify-icons/mdi/calculator';
 import { useHistory } from "react-router-dom";
 import "./Sidebar.css";
 import logout from "../../reusables/Logout";
@@ -48,6 +50,12 @@ const lists = [
   },
   {
     id: 7,
+    title: "EmiCalculator",
+    route: "emicalculator",
+    icon: <calculatorIcon/>,
+  },
+  {
+    id: 8,
     title: "Logout",
     route: null,
     icon: <ExitToAppIcon />,
