@@ -1,0 +1,78 @@
+.setup-emi {
+    position: relative;
+    justify-content: center;
+    margin-left: 280px;
+    padding: 50px;
+    width: 60%;
+}
+
+.emi-input {
+    margin: 12px;
+    padding: 5px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.due-date {
+    margin-left: 45px;
+    width: 100%;
+}
+
+.emi-input input {
+    border: 2px solid;
+    border-radius: 5px;
+    display: inline-block;
+    width: 60%;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.emi-input input:focus {
+    outline: aqua;
+}
+
+.emi-input label {
+    display: block;
+}
+
+.emi-input small {
+    display: block;
+    visibility: hidden;
+    color: red;
+}
+
+.emi-input.error small {
+    visibility: visible;
+}
+
+.emi-input.success small {
+    visibility: hidden;
+}
+
+.submit-button {
+    margin-left: 80px;
+    margin-bottom: 10px;
+    height: 35px;
+}
+
+.submit-button input {
+    position: center;
+    margin-left: 0px;
+    width: 25%;
+    height: 40px;
+    background-color: #4747ff;
+    color: white;
+}
+
+.submit-button button {
+    margin-left: 80px;
+    position: center;
+    width: 25%;
+    height: 40px;
+    background-color: #b6b6b6;
+}
+
+.emi-success {
+    margin-top: 50px;
+}
