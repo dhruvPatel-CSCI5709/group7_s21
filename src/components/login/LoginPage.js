@@ -3,13 +3,13 @@ import { Container, Row, Col } from 'react-bootstrap'
 import './LoginPage.css'
 import LoginWithPassword from './LoginWithPassword'
 import LoginWithOTP from './LoginWithOtp'
-import uiImg from '../../img/background.png'
+import uiImg from '../../img/login_img.png'
 
 const LoginPage = ({ history, location }) => {
   const mode = location.search ? location.search.split('=')[1] : '/'
 
   return (
-    <Container className='mt-5'>
+    <Container>
       <Row>
         <Col lg={4} md={6} sm={12} className='text-center mt-5 p-3'>
           {mode === 'otp' ? (

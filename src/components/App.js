@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter, Route, useHistory } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import DeleteProfile from './deleteProfile/deleteProfile'
 import HomePage from './homePage/HomePage'
@@ -9,7 +9,8 @@ import Dashboard from './dashboard/Dashboard'
 import Reports from './reports/Reports'
 import Expense from './expense/Expense'
 import Login from './login/LoginPage'
-import SetUpEMIDueDate from "./notification/emi_setup";
+import SetUpEMIDueDate from './notification/emi_setup'
+import Register from './register/RegisterPage'
 
 export default function App() {
   const history = useHistory()
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <div className='App'>
       <Route exact path='/login' component={Login}></Route>
+      <Route exact path='/register' component={Register}></Route>
       <Route exact path='/' component={HomePage} />
       <Route exact path='/deleteProfile' component={DeleteProfile}></Route>
       <Route exact path='/profile' component={Profile}></Route>

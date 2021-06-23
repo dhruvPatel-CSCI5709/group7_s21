@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Card, Row, Col, Container } from 'react-bootstrap'
 import './LoginPage.css'
-import user from '../../img/user.svg'
 
 const LogInWithOTP = ({ history }) => {
   const [otp, setOtp] = useState('')
@@ -88,7 +87,10 @@ const LogInWithOTP = ({ history }) => {
     <Container fluid>
       <Card style={{ width: '22rem', marginTop: '2rem' }}>
         <Card.Body>
-          <img className='icon-img mt-4' src={user} alt='icon' />
+          <h1 style={{ textAlign: 'center' }} className='primary-color'>
+            Login
+          </h1>
+          <hr />
           <Form onSubmit={submitHandler}>
             {buttonClicked ? (
               <div>OTP has been sent to your Email ID</div>
@@ -106,11 +108,7 @@ const LogInWithOTP = ({ history }) => {
                 </Col>
                 <Col md={4}>
                   {' '}
-                  <Button
-                    variant='info'
-                    className='mt-2'
-                    onClick={clickHandler}
-                  >
+                  <Button className='mt-2' onClick={clickHandler}>
                     OTP
                   </Button>
                 </Col>
@@ -128,13 +126,13 @@ const LogInWithOTP = ({ history }) => {
             </Form.Group>
             <div className='error'>{otpError}</div>
 
-            <div className='mt-3'>
+            <div className='mt-3' className='primary-color'>
               <Card.Link href='/login?mode=password'>
                 Login With Password
               </Card.Link>
               <Card.Link href='#'>Resend OTP</Card.Link>
             </div>
-            <Button variant='primary' type='submit' className='mt-3 px-5'>
+            <Button type='submit' className='mt-3 px-5'>
               Login
             </Button>
           </Form>
