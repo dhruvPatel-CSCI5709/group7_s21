@@ -99,8 +99,8 @@ export default function Sidebar() {
           key={list.id}
           className="button-dashboard"
           style={{
-            backgroundColor: list.title === path ? "#2a95bf" : "",
-            color: list.title === path ? "white" : "#808080",
+            backgroundColor: list.title.toLowerCase() === path.toLowerCase() ? "#2a95bf" : "",
+            color: list.title.toLowerCase() === path.toLowerCase() ? "white" : "#808080",
           }}
           onClick={() => {
             handleColor(list);
