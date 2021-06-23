@@ -84,6 +84,7 @@
 }
 
 .finance-info-container {
+  width: 78%;
   display: flex;
   flex-direction: column;
   margin-top: 25px;
