@@ -109,7 +109,6 @@ export default class SetUpEMIDueDate extends Component {
         const e = emi_name.parentElement;
         e.className = 'emi-input success';
         emi_amount.parentElement.className = 'emi-input success';
-        emi_due_date.parentElement.className = 'emi-input success';
     }
 
     render() {
@@ -135,7 +134,7 @@ export default class SetUpEMIDueDate extends Component {
                                     <small>dummy_error_message</small>
                                 </div>
                                 <div className={"emi-input"}>
-                                    <div id={"due-date"}>
+                                    <div className={"due-date"}>
                                         <label>EMI due date every of month(Between 1-31): </label>
                                         <input type="text" id="emi_due_date" placeholder="Due date of every month"/>
                                         <small>dummy_error_message</small>
