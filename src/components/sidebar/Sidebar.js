@@ -52,7 +52,7 @@ const lists = [
     id: 7,
     title: "EmiCalculator",
     route: "emicalculator",
-    icon: <calculatorIcon/>,
+    icon: <AssessmentIcon />,
   },
   {
     id: 8,
