@@ -9,6 +9,7 @@ import Dashboard from './dashboard/Dashboard'
 import Reports from './reports/Reports'
 import Expense from './expense/Expense'
 import Login from './login/LoginPage'
+import SetUpEMIDueDate from "./notification/emi_setup";
 
 export default function App() {
   const history = useHistory()
@@ -35,6 +36,7 @@ export default function App() {
       ></Route>
       <Route exact path='/reports' component={Reports}></Route>
       <Route exact path='/expense' component={Expense}></Route>
+      <Route exact path='/notifications' component={SetUpEMIDueDate} />
     </div>
   )
 }
