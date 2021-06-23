@@ -10,11 +10,12 @@ import Reports from './reports/Reports'
 import Expense from './expense/Expense'
 import Login from './login/LoginPage'
 
-export default function PermanentDrawerLeft() {
+export default function App() {
   const history = useHistory()
 
   useEffect(() => {
     const loginStatus = localStorage.getItem('loginStatus')
+
     if (!loginStatus) {
       history.push('/login')
     }

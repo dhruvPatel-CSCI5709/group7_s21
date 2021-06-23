@@ -5,7 +5,7 @@ import LoginWithPassword from './LoginWithPassword'
 import LoginWithOTP from './LoginWithOtp'
 import uiImg from '../../img/background.png'
 
-const LoginPage = ({ history, match, location }) => {
+const LoginPage = ({ history, location }) => {
   const mode = location.search ? location.search.split('=')[1] : '/'
 
   return (
