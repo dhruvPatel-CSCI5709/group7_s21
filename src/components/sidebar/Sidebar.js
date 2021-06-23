@@ -44,6 +44,12 @@ const lists = [
     title: 'Logout',
     route: null,
   },
+  {
+    id: 7,
+    title: 'Expense',
+    route: 'expense',
+    icon: <AssessmentIcon />,
+  },
 ]
 
 export default function Sidebar() {
