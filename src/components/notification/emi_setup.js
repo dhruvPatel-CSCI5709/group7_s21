@@ -28,7 +28,7 @@ export default class SetUpEMIDueDate extends Component {
         } else {
             this.removeError(emi_name);
         }
-        // check alphanuremic
+// check alphanuremic
 
         const emi_amount = document.getElementById("emi_amount");
         const emi_amount_str = emi_amount.value
@@ -109,6 +109,7 @@ export default class SetUpEMIDueDate extends Component {
         const e = emi_name.parentElement;
         e.className = 'emi-input success';
         emi_amount.parentElement.className = 'emi-input success';
+        emi_due_date.parentElement.className = 'emi-input success';
     }
 
     render() {
@@ -134,7 +135,7 @@ export default class SetUpEMIDueDate extends Component {
                                     <small>dummy_error_message</small>
                                 </div>
                                 <div className={"emi-input"}>
-                                    <div className={"due-date"}>
+                                    <div id={"due-date"}>
                                         <label>EMI due date every of month(Between 1-31): </label>
                                         <input type="text" id="emi_due_date" placeholder="Due date of every month"/>
                                         <small>dummy_error_message</small>
