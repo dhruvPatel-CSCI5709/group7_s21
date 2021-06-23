@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Route, useHistory } from 'react-router-dom'
+import { BrowserRouter, Route, useHistory } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import DeleteProfile from './deleteProfile/deleteProfile'
 import HomePage from './homePage/HomePage'
@@ -27,7 +27,6 @@ export default function App() {
   return (
     <div className='App'>
       <Route exact path='/login' component={Login}></Route>
-      <Route exact path='/register' component={Register}></Route>
       <Route exact path='/' component={HomePage} />
       <Route exact path='/deleteProfile' component={DeleteProfile}></Route>
       <Route exact path='/profile' component={Profile}></Route>
