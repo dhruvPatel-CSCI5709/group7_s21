@@ -30,7 +30,7 @@ export default function App() {
       <Route exact path='/' component={HomePage} />
       <Route exact path='/deleteProfile' component={DeleteProfile}></Route>
       <Route exact path='/profile' component={Profile}></Route>
-      <Route exact path='/dashboard' component={Dashboard}></Route>
+      <Route exact path='/Dashboard' component={Dashboard}></Route>
       <Route
         exact
         path='/incorrectPassword'
