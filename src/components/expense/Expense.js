@@ -10,7 +10,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import ButtonNew from '../../reusables/Button/Button'
+import ButtonNew from '../../reusables/Button/Button';
+import Notification from "../../reusables/Notifications/Notifications";
+import {notificationTypes} from "../../constants";
 
 const useStyles = makeStyles({
     root: {
@@ -130,18 +132,18 @@ function Expense() {
     ];
 
     const rowData = [
-        {title: "Pizza2", category: "Education", amount: 100, dateOfExp: "28/05/1998", paymentMethod: "Card"},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
-        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
+        {title: "Books", category: "Education", amount: 100, dateOfExp: "28/05/2020", paymentMethod: "Card"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
+        {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/2020", paymentMethod: "Cash"},
     ]
 
     const rows = rowData.map((data, index) => {
@@ -150,12 +152,20 @@ function Expense() {
             amount: data.amount,
             dateOfExp: data.dateOfExp,
             paymentMethod: data.paymentMethod,
-            actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew handleClick={() => handleEdit(data)} buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>}
+            actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew handleClick={() => handleEdit(data)} buttonTitle={"Edit"}/> <ButtonNew handleClick={() => handleDelete(data)} buttonTitle={"Delete"}/></div>}
     })
 
     const handleEdit = (data) => {
         setExpenseData(data);
         setShowForm(true);
+    }
+
+    const handleDelete = (data) => {
+        Notification(
+            notificationTypes.SUCCESS,
+            "Expense Deleted!",
+            ""
+        );
     }
 
     const handleChangePage = (event, newPage) => {

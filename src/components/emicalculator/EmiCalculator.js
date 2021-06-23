@@ -57,6 +57,4 @@ export default function EmiCalculator() {
     </div>
   </div>
 );
-  
-  
 }

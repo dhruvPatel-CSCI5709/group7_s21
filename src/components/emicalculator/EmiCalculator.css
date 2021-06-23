@@ -3,17 +3,7 @@
       display:flex;
     }
   }
-  /* .wrapper {
-    height: 500px;
-    width: 100%;
-    display: inline-flex;
-    width: 70%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color:#FFFFFF;
-  } */
-  
+ 
   .form-wrapper {
     width: 450px;
     display: flex;
