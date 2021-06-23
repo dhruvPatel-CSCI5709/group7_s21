@@ -130,7 +130,7 @@ function Expense() {
     ];
 
     const rowData = [
-        {title: "Pizza2", category: "Education", amount: 100, dateOfExp: new Date(), paymentMethod: "Card"},
+        {title: "Pizza2", category: "Education", amount: 100, dateOfExp: "28/05/1998", paymentMethod: "Card"},
         {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
         {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
         {title: "Pizza", category: "Food", amount: 50, dateOfExp: "28/05/1998", paymentMethod: "Cash", actions: <div style={{display:"flex", justifyContent:"space-evenly"}}><ButtonNew buttonTitle={"Edit"}/> <ButtonNew buttonTitle={"Delete"}/></div>},
