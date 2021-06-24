@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Form, Card } from 'react-bootstrap'
 import './LoginPage.css'
-import user from '../../img/user.svg'
+import { Link } from 'react-router-dom'
 
 const LogInWithPassword = ({ history }) => {
   const [email, setEmail] = useState('')
@@ -53,7 +53,7 @@ const LogInWithPassword = ({ history }) => {
     if (isValid) {
       setInitErrorState()
       localStorage.setItem('loginStatus', true)
-      history.push('/dashboard')
+      history.push('/Dashboard')
     }
   }
 
@@ -61,7 +61,10 @@ const LogInWithPassword = ({ history }) => {
     <div>
       <Card style={{ width: '22rem', marginTop: '2rem' }}>
         <Card.Body>
-          <img className='icon-img mt-4' src={user} alt='icon' />
+          <h1 style={{ textAlign: 'center' }} className='primary-color'>
+            Login
+          </h1>
+          <hr />
           <Form onSubmit={submitHandler}>
             <Form.Group className='mt-2'>
               <Form.Control
@@ -82,10 +85,22 @@ const LogInWithPassword = ({ history }) => {
             </Form.Group>
             <div className='error'>{passwordError}</div>
             <div className='mt-3'>
-              <Card.Link href='/login?mode=otp'>Login With OTP</Card.Link>
-              <Card.Link href='#'>Forgot Password</Card.Link>
+              <Card.Link href='#' className='primary-color'>
+                Login With OTP
+              </Card.Link>
+              <Card.Link href='#' className='primary-color'>
+                Forgot Password
+              </Card.Link>
             </div>
-            <Button variant='primary' type='submit' className='mt-3 px-5'>
+            <hr />
+            <div style={{ textAlign: 'center' }} className='mt-3'>
+              Don't have an account?{' '}
+              <Link to='/register' className='primary-color'>
+                Sign Up
+              </Link>
+            </div>
+
+            <Button type='submit' className='mt-3 px-5 btn-primary'>
               Login
             </Button>
           </Form>
