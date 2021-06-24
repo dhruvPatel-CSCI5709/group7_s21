@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import "./emi_setup.css";
 import EMISuccess from "./emi_success";
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
+import "./emi_setup.css";
 
 export default class SetUpEMIDueDate extends Component {
     #success = 0;
@@ -34,10 +34,8 @@ export default class SetUpEMIDueDate extends Component {
         const emi_amount_str = emi_amount.value
         if (this.checkNotEmpty(emi_amount_str) === false) {
             this.setError(emi_amount, "EMI amount is a mandatory field")
-            return;
         } else if (this.checkNumeric(emi_amount_str) === false) {
             this.setError(emi_amount, "EMI Amount must be numeric and integer");
-            return;
         } else {
             this.removeError(emi_amount);
         }
@@ -102,10 +100,12 @@ export default class SetUpEMIDueDate extends Component {
     }
 
     clearText() {
-        document.getElementById("emi-form").reset();
         let emi_name = document.getElementById('emi_name');
+        emi_name.value='';
         let emi_amount = document.getElementById('emi_amount');
+        emi_amount.value='';
         let emi_due_date = document.getElementById('emi_due_date');
+        emi_due_date.value='';
         const e = emi_name.parentElement;
         e.className = 'emi-input success';
         emi_amount.parentElement.className = 'emi-input success';
@@ -113,44 +113,46 @@ export default class SetUpEMIDueDate extends Component {
     }
 
     render() {
-        return <>
-            <div>
+        return (
+            <React.Fragment>
                 <Header title="EMISetup"/>
                 <Sidebar/>
-                {!this.state.redirect ? (
-
-                    <div>
-                        <div className="setup-emi">
-                            <h4>Set up EMI due date, so that we will remind you about the EMI due dates</h4>
-                            <h5>Please enter following details:</h5>
-                            <form id="emi-form" onSubmit={this.validateForm}>
-                                <div className={"emi-input"}>
-                                    <label>Give EMI a name: </label>
-                                    <input type="text" id="emi_name" placeholder="Give emi a name"/>
-                                    <small>dummy_error_message</small>
-                                </div>
-                                <div className={"emi-input"}>
-                                    <label>Enter monthly EMI amount: </label>
-                                    <input type="text" id="emi_amount" placeholder="Monthly EMI amount"/>
-                                    <small>dummy_error_message</small>
-                                </div>
-                                <div className={"emi-input"}>
-                                    <div id={"due-date"}>
-                                        <label>EMI due date every of month(Between 1-31): </label>
-                                        <input type="text" id="emi_due_date" placeholder="Due date of every month"/>
-                                        <small>dummy_error_message</small>
-                                    </div>
-                                </div>
-                                <div className={"submit-button"}>
-                                    <input type={"submit"} value={"Submit"}/>
-                                    <button type={"button"} onClick={this.clearText}>Cancel</button>
-                                </div>
-                            </form>
-                        </div>
+                <div className={"table-form"}>
+                    <div className="form-h">
+                    <h4>&nbsp;&nbsp;&nbsp;Set up EMI due date, so that we will remind you about the EMI due dates</h4>
+                    <h5>&nbsp;&nbsp;&nbsp;Please enter following details:</h5>
                     </div>
-                ) : (<EMISuccess emi_name={this.state.emi_name} emi_amount={this.state.emi_amount}
-                                 emi_due_date={this.state.emi_due_date}/>)}
-            </div>
-        </>
+                    <table>
+                        <tr>
+                            <div className={"emi-input"}>
+                                <label>Give EMI a name: </label>
+                                <input type="text" id="emi_name" placeholder="Give emi a name"/>
+                                <small>dummy_error_message</small>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div className={"emi-input"}>
+                                <label>Enter monthly EMI amount: </label>
+                                <input type="text" id="emi_amount" placeholder="Monthly EMI amount"/>
+                                <small>dummy_error_message</small>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div className={"emi-input"}>
+                                <label>EMI due date every of month(Between 1-31): </label>
+                                <input type="text" id="emi_due_date" placeholder="Due date of every month"/>
+                                <small>dummy_error_message</small>
+                            </div>
+                        </tr>
+                        <tr>
+                            <div className={"submit-button"}>
+                                <button type={"submit"} onClick={this.validateForm}>Submit</button>
+                                <button type={"submit"} onClick={this.clearText}>Cancel</button>
+                            </div>
+                        </tr>
+                    </table>
+                </div>
+            </React.Fragment>
+        )
     }
 }
