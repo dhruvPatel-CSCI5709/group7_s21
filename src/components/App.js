@@ -9,8 +9,9 @@ import Dashboard from './dashboard/Dashboard'
 import Reports from './reports/Reports'
 import Expense from './expense/Expense'
 import Login from './login/LoginPage'
+import SetUpEMIDueDate from "./notification/emi_setup";
+import OptExpense from "./notification/opt_expense";
 import EmiCalculator  from './emicalculator/EmiCalculator'
-import SetUpEMIDueDate from './notification/emi_setup'
 import Register from './register/RegisterPage'
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
       <Route exact path='/expense' component={Expense}></Route>
       <Route exact path='/emicalculator' component={EmiCalculator}></Route>
       <Route exact path='/notifications' component={SetUpEMIDueDate} />
+      <Route exact path='/expenseopt' component={OptExpense} />
     </div>
   )
 }
