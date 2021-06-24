@@ -38,7 +38,7 @@ const lists = [
   },
   {
     id: 5,
-    title: "Statistical Reports",
+    title: "Reports",
     route: "reports",
     icon: <AssessmentIcon />,
   },
