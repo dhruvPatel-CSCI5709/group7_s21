@@ -57,17 +57,17 @@
 }
 
 .submit-button input {
-    position: center;
-    margin-left: 0px;
+    position: relative;
+
     width: 25%;
     height: 40px;
-    background-color: #4747ff;
+    background-color: #47afff;
     color: white;
 }
 
 .submit-button button {
-    margin-left: 80px;
-    position: center;
+    margin-left: 85px;
+    position: relative;
     width: 25%;
     height: 40px;
     background-color: #b6b6b6;
