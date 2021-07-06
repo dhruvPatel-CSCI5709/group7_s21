@@ -1,3 +1,10 @@
+import DashboardTwoToneIcon from "@material-ui/icons/DashboardTwoTone";
+import AccountBoxTwoToneIcon from "@material-ui/icons/AccountBoxTwoTone";
+import NotificationsNoneTwoToneIcon from "@material-ui/icons/NotificationsNoneTwoTone";
+import AssessmentIcon from "@material-ui/icons/Assessment";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import FunctionsTwoToneIcon from "@material-ui/icons/FunctionsTwoTone";
+
 export const chartData = {
   type: "bar",
   data: {
@@ -115,4 +122,49 @@ export const MONTHS = [
   "Octomber",
   "November",
   "December",
+];
+
+export const lists = [
+  {
+    id: 1,
+    title: "Dashboard",
+    route: "dashboard",
+    icon: <DashboardTwoToneIcon />,
+  },
+  {
+    id: 2,
+    title: "Notifications",
+    route: "notifications",
+    icon: <NotificationsNoneTwoToneIcon />,
+  },
+  {
+    id: 3,
+    title: "Profile",
+    route: "profile",
+    icon: <AccountBoxTwoToneIcon />,
+  },
+  {
+    id: 4,
+    title: "Reports",
+    route: "reports",
+    icon: <AssessmentIcon />,
+  },
+  {
+    id: 5,
+    title: "Expense",
+    route: "expense",
+    icon: <AssessmentIcon />,
+  },
+  {
+    id: 6,
+    title: "EmiCalculator",
+    route: "emicalculator",
+    icon: <FunctionsTwoToneIcon />,
+  },
+  {
+    id: 7,
+    title: "Logout",
+    route: null,
+    icon: <ExitToAppIcon />,
+  },
 ];

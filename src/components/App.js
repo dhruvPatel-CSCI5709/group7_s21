@@ -1,47 +1,31 @@
-import React, { useEffect } from 'react'
-import { BrowserRouter, Route, useHistory } from 'react-router-dom'
-import 'antd/dist/antd.css'
-import DeleteProfile from './deleteProfile/deleteProfile'
-import HomePage from './homePage/HomePage'
-import IncorrectPassword from './incorrectPassword/IncorrectPassword'
-import Profile from './profile/Profile'
-import Dashboard from './dashboard/Dashboard'
-import Reports from './reports/Reports'
-import Expense from './expense/Expense'
-import Login from './login/LoginPage'
-import SetUpEMIDueDate from "./notification/emi_setup";
-import OptExpense from "./notification/opt_expense";
-import EmiCalculator  from './emicalculator/EmiCalculator'
-import Register from './register/RegisterPage'
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, useHistory } from "react-router-dom";
+import "antd/dist/antd.css";
+import "react-pro-sidebar/dist/css/styles.css";
+import Aside from "./sidebar/newSidebar";
+import { IntlProvider } from "react-intl";
+import messages from "./messages";
+import Main from "./Main";
+import "./App.scss";
+import Layout from "./Layout";
 
 export default function App() {
-  const history = useHistory()
+  const history = useHistory();
+  const [locale, setLocale] = useState("en");
 
   useEffect(() => {
-    const loginStatus = localStorage.getItem('loginStatus')
+    const loginStatus = localStorage.getItem("loginStatus");
 
     if (!loginStatus) {
-      history.push('/login')
+      history.push("/login");
     }
-  }, [])
+  }, []);
 
   return (
-    <div className='App'>
-      <Route exact path='/login' component={Login}></Route>
-      <Route exact path='/' component={HomePage} />
-      <Route exact path='/deleteProfile' component={DeleteProfile}></Route>
-      <Route exact path='/profile' component={Profile}></Route>
-      <Route exact path='/Dashboard' component={Dashboard}></Route>
-      <Route
-        exact
-        path='/incorrectPassword'
-        component={IncorrectPassword}
-      ></Route>
-      <Route exact path='/reports' component={Reports}></Route>
-      <Route exact path='/expense' component={Expense}></Route>
-      <Route exact path='/emicalculator' component={EmiCalculator}></Route>
-      <Route exact path='/notifications' component={SetUpEMIDueDate} />
-      <Route exact path='/expenseopt' component={OptExpense} />
-    </div>
-  )
+    <IntlProvider locale={locale} messages={messages[locale]}>
+      <div className="App">
+        <Layout />
+      </div>
+    </IntlProvider>
+  );
 }

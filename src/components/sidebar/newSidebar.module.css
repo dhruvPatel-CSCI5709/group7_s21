@@ -1,0 +1,25 @@
+.side-bar :global .pro-sidebar-layout {
+  color: white;
+  background: #2a95bf;
+}
+
+.side-bar :global .pro-sidebar-header {
+  font-size: 24px;
+}
+
+.side-bar :global .pro-menu .pro-menu-item.active.active {
+  background: white;
+  color: #2a95bf;
+  margin: 15px;
+  border-radius: 8px;
+}
+
+.side-bar :global .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus,
+.side-bar
+  :global
+  .pro-sidebar
+  .pro-menu
+  .pro-menu-item
+  > .pro-inner-item:hover {
+  color: white;
+}

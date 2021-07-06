@@ -18,13 +18,13 @@ import {
 import { daysData, monthlyData } from "./data";
 import RadioGroup from "../../reusables/RadioGroup/RadioGroup";
 import AnimatedNumber from "animated-number-react";
-import Sidebar from "../sidebar/Sidebar";
-import Header from "../header/Header";
 
 const cx = c.bind(styles);
 
 const Reports = () => {
-  const [reportType, setReportType] = useState(null);
+  const [reportType, setReportType] = useState(
+    reportTypeMenu.constants.CATEGORY
+  );
   const reportComponent = useRef();
   const [month, setMonth] = useState(monthlyData.length);
   const [timeline, setTimeline] = useState(timelineReportMenu.constants.MONTHS);
@@ -152,8 +152,6 @@ const Reports = () => {
 
   return (
     <div>
-      <Header title="Statistical Reports" />
-      <Sidebar />
       <div className={cx("main-container")}>
         {/* <h1 className={cx("heading")}>Statistical Reports</h1> */}
         <div className={cx("print-button")}>

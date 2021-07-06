@@ -8,8 +8,6 @@ import expense_img from "../../resources/expenses.jpg";
 export default function Dashboard() {
   return (
     <div>
-      <Header />
-      <Sidebar />
       <div className="main-dashboard">
         <div className="thought-dashboard">
           <p className="a">
