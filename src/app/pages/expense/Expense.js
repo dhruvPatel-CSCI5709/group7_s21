@@ -8,9 +8,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import ButtonNew from "../../reusables/Button/Button";
-import Notification from "../../reusables/Notifications/Notifications";
-import { notificationTypes } from "../../constants";
+import ButtonNew from "../../components/Button/Button";
+import Notification from "../../components/Notifications/Notifications";
+import { notificationTypes } from "../../../constants";
 
 const useStyles = makeStyles({
   root: {

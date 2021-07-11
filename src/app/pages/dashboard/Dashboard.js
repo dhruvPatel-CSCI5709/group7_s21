@@ -1,9 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
-import Sidebar from "../sidebar/Sidebar";
-import Header from "../header/Header";
-import income_img from "../../resources/incomes.png";
-import expense_img from "../../resources/expenses.jpg";
+import income_img from "../../../resources/incomes.png";
+import expense_img from "../../../resources/expenses.jpg";
 
 export default function Dashboard() {
   return (

@@ -1,17 +1,17 @@
 import React, { Fragment, useState } from "react";
 import { Route } from "react-router-dom";
-import DeleteProfile from "./deleteProfile/deleteProfile";
-import HomePage from "./homePage/HomePage";
-import IncorrectPassword from "./incorrectPassword/IncorrectPassword";
-import Profile from "./profile/Profile";
-import Dashboard from "./dashboard/Dashboard";
-import Reports from "./reports/Reports";
-import Expense from "./expense/Expense";
-import Login from "./login/LoginPage";
-import SetUpEMIDueDate from "./notification/emi_setup";
-import OptExpense from "./notification/opt_expense";
-import EmiCalculator from "./emicalculator/EmiCalculator";
-import Aside from "./sidebar/newSidebar";
+import DeleteProfile from "./components/deleteProfile/deleteProfile";
+import HomePage from "./pages/homePage/HomePage";
+import IncorrectPassword from "./components/incorrectPassword/IncorrectPassword";
+import Profile from "./pages/profile/Profile";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Reports from "./pages/reports/Reports";
+import Expense from "./pages/expense/Expense";
+import Login from "./components/login/LoginPage";
+import SetUpEMIDueDate from "./pages/notification/emi_setup";
+import OptExpense from "./pages/notification/opt_expense";
+import EmiCalculator from "./pages/emicalculator/EmiCalculator";
+import Aside from "./components/sidebar/newSidebar";
 import Main from "./Main";
 
 const Layout = () => {

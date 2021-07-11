@@ -4,10 +4,15 @@ import ReactToPrint from "react-to-print";
 import { PrinterOutlined, SmileOutlined } from "@ant-design/icons";
 import styles from "./Reports.module.css";
 import c from "classnames/bind";
-import CreateChart from "../../reusables/CreateChart/CreateChart";
-import Dropdown from "../../reusables/Dropdown/Dropdown";
-import Notification from "../../reusables/Notifications/Notifications";
-import { chartData, colors, MONTHS, notificationTypes } from "../../constants";
+import CreateChart from "../../components/CreateChart/CreateChart";
+import Dropdown from "../../components/Dropdown/Dropdown";
+import Notification from "../../components/Notifications/Notifications";
+import {
+  chartData,
+  colors,
+  MONTHS,
+  notificationTypes,
+} from "../../../constants";
 import {
   dayTimelineReportMenu,
   monthMenu,
@@ -16,7 +21,7 @@ import {
   chartTypeRadio,
 } from "./configurations";
 import { daysData, monthlyData } from "./data";
-import RadioGroup from "../../reusables/RadioGroup/RadioGroup";
+import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import AnimatedNumber from "animated-number-react";
 
 const cx = c.bind(styles);
