@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Header from "../header/Header";
 import "./IncorrectPassword.css";
 
 export default function IncorrectPassword() {
@@ -18,7 +17,6 @@ export default function IncorrectPassword() {
   };
   return (
     <div>
-      <Header />
       <div className="root-div">
         <form onSubmit={handleSubmit}>
           <label for="email">
