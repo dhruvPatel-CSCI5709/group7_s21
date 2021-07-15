@@ -1,8 +1,8 @@
 import React from "react";
 
 import "./Profile.css";
-import face from "../../../resources/face.jpg";
-import rbcBank from "../../../resources/RBCjpg.jpg";
+import face from "../../assets/face.jpg";
+import rbcBank from "../../assets/RBCjpg.jpg";
 import EditIcon from "@material-ui/icons/Edit";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";

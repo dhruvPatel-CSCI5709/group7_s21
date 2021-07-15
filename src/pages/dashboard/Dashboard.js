@@ -1,7 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
-import income_img from "../../../resources/incomes.png";
-import expense_img from "../../../resources/expenses.jpg";
+import income_img from "../../assets/incomes.png";
+import expense_img from "../../assets/expenses.jpg";
 
 export default function Dashboard() {
   return (

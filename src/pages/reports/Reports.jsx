@@ -7,12 +7,7 @@ import c from "classnames/bind";
 import CreateChart from "../../components/CreateChart/CreateChart";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import Notification from "../../components/Notifications/Notifications";
-import {
-  chartData,
-  colors,
-  MONTHS,
-  notificationTypes,
-} from "../../../constants";
+import { chartData, colors, MONTHS, notificationTypes } from "../../constants";
 import {
   dayTimelineReportMenu,
   monthMenu,

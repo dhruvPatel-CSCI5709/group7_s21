@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./LoginPage.css";
 import LoginWithPassword from "./LoginWithPassword";
 import LoginWithOTP from "./LoginWithOtp";
-import uiImg from "../../../img/login_img.png";
+import uiImg from "../../img/login_img.png";
 
 const LoginPage = ({ history, location }) => {
   const mode = location.search ? location.search.split("=")[1] : "/";
