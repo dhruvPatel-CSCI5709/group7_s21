@@ -1,0 +1,94 @@
+.setup-emi {
+    position: relative;
+    justify-content: center;
+    margin-left: 380px;
+    padding: 50px;
+    width: 80%;
+    display: block;
+    height: 600px;
+}
+
+.table-form {
+    margin-top: 60px;
+    margin-left: 0px;
+}
+
+.table-form table,td,tr,th {
+    border: 0px solid black;
+    margin-left: 0px;
+}
+
+.table-form tr {
+    height: 100px;
+}
+
+.emi-input {
+    margin: 12px;
+    padding: 5px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
+
+#due-date {
+    margin-left: 45px;
+    width: 100%;
+}
+
+.emi-input input {
+    border: 2px solid;
+    border-radius: 5px;
+    display: block;
+    width: 98%;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.emi-input input:focus {
+    outline: aqua;
+}
+
+.emi-input label {
+    display: block;
+}
+
+.emi-input small {
+    display: block;
+    visibility: hidden;
+    color: red;
+}
+
+.emi-input.error small {
+    visibility: visible;
+}
+
+.emi-input.success small {
+    visibility: hidden;
+}
+
+.submit-button {
+    display: inline-flex;
+    justify-content: space-around;
+}
+
+.submit-button button{
+    position: relative;
+    height: 43px;
+    background-color: #2a95bf;
+    color: white;
+    margin-left: 15px;
+    width: 110px;
+}
+
+/*
+.submit-button button {
+    position: relative;
+    width: 45%;
+    height: 30px;
+    background-color: #b6b6b6;
+}
+*/
+.emi-success {
+    margin-top: 50px;
+}

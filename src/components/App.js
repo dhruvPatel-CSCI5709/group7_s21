@@ -10,6 +10,9 @@ import Reports from './reports/Reports'
 import Expense from './expense/Expense'
 import Login from './login/LoginPage'
 import ForgotPassword from './login/ForgotPassword'
+import SetUpEMIDueDate from './notification/emi_setup'
+import OptExpense from './notification/opt_expense'
+import EmiCalculator from './emicalculator/EmiCalculator'
 import Register from './register/RegisterPage'
 
 export default function App() {
@@ -26,19 +29,22 @@ export default function App() {
   return (
     <div className='App'>
       <Route exact path='/login' component={Login}></Route>
-      <Route exact path='/register' component={Register}></Route>
       <Route exact path='/' component={HomePage} />
       <Route exact path='/deleteProfile' component={DeleteProfile}></Route>
       <Route exact path='/profile' component={Profile}></Route>
-      <Route exact path='/dashboard' component={Dashboard}></Route>
+      <Route exact path='/Dashboard' component={Dashboard}></Route>
       <Route
         exact
         path='/incorrectPassword'
         component={IncorrectPassword}
       ></Route>
       <Route exact path='/reports' component={Reports}></Route>
+      <Route exact path='/register' component={Register}></Route>
       <Route exact path='/expense' component={Expense}></Route>
       <Route exact path='/forgotpassword' component={ForgotPassword}></Route>
+      <Route exact path='/emicalculator' component={EmiCalculator}></Route>
+      <Route exact path='/notifications' component={SetUpEMIDueDate} />
+      <Route exact path='/expenseopt' component={OptExpense} />
     </div>
   )
 }

@@ -1,0 +1,148 @@
+@media only screen and (min-width: 1024px) {
+    .container header .header-nav-area #nav_container  {
+      display:flex;
+    }
+  }
+ 
+  .form-wrapper {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #808080;
+    padding: 20px 40px;
+    margin: 10px 10px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 50px #555;
+    background-color: #ffffff;
+    @media only screen and (max-width: 768px) {
+      width: 60%;
+  }
+  
+    
+  }
+  
+  form {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    @media only screen and (max-width: 768px) {
+        width: 80%;
+    }
+  }
+  
+  h1 {
+    text-align: center;
+    width: 100%;
+    color: #111;
+    font-weight: lighter;
+    font-family: sans-serif;
+  }
+  
+  label {
+    font-size: 0.8em;
+    margin-bottom: 0.25em;
+    color: #222;
+    font-weight: lighter;
+  }
+  
+  input {
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #cfcfcf;
+  }
+  
+  input::placeholder {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #999;
+  }
+  
+  input.error {
+    border: 1px solid red;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 0.75em;
+    display: relative;
+  }
+  
+  
+  
+  .loancategory,
+  .amount,
+  .interestrate,
+  .period {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+ .interestrate,
+  .period{
+    width: 100%;
+  }
+  
+  .calculate {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .calculate button {
+    background-color:#2a95bf;
+    color: #fff;
+    border: 2px solid #fff;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
+  
+  .calculate button:hover {
+    color: #2a95bf;
+    background-color: #fff;
+    border: 2px solid #2a95bf;
+  }
+  
+  .calculate small {
+    color: #999;
+    font-weight: lighter;
+  }
+  
+  .reset {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .reset button {
+    background-color: #2a95bf;
+    color: #fff;
+    border: 2px solid #fff;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+  }
+  
+  .reset button:hover {
+    color: #2a95bf;
+    background-color: #fff;
+    border: 2px solid #2a95bf;
+  }
+  
+  .reset small {
+    color: #999;
+    font-weight: lighter;
+  }

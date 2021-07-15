@@ -1,11 +1,13 @@
 import React from "react";
 import DashboardTwoToneIcon from "@material-ui/icons/DashboardTwoTone";
-import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
+import AccountBoxTwoToneIcon from "@material-ui/icons/AccountBoxTwoTone";
 import NotificationsNoneTwoToneIcon from "@material-ui/icons/NotificationsNoneTwoTone";
 import MonetizationOnTwoToneIcon from "@material-ui/icons/MonetizationOnTwoTone";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import FunctionsTwoToneIcon from "@material-ui/icons/FunctionsTwoTone";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import "./Sidebar.css";
 import logout from "../../reusables/Logout";
 
@@ -18,33 +20,33 @@ const lists = [
   },
   {
     id: 2,
-    title: "Finances",
-    route: "finances",
-    icon: <MonetizationOnTwoToneIcon />,
-  },
-  {
-    id: 3,
     title: "Notifications",
     route: "notifications",
     icon: <NotificationsNoneTwoToneIcon />,
   },
   {
-    id: 4,
+    id: 3,
     title: "Profile",
     route: "profile",
-    icon: <AccountBoxRoundedIcon />,
+    icon: <AccountBoxTwoToneIcon />,
   },
   {
-    id: 5,
-    title: "Statistical Reports",
+    id: 4,
+    title: "Reports",
     route: "reports",
     icon: <AssessmentIcon />,
   },
   {
-    id: 6,
+    id: 5,
     title: "Expense",
     route: "expense",
     icon: <AssessmentIcon />,
+  },
+  {
+    id: 6,
+    title: "EmiCalculator",
+    route: "emicalculator",
+    icon: <FunctionsTwoToneIcon />,
   },
   {
     id: 7,
@@ -55,16 +57,31 @@ const lists = [
 ];
 
 export default function Sidebar() {
+  const [selected, setSelected] = useState();
+  const [color, setColor] = useState("#808080");
+  const [bgColor, setBgColor] = useState("");
+  const [toggle, setToggle] = useState(true);
   const history = useHistory();
 
-  const handleRoute = (title, route) => {
-    if (title == "Logout") {
-      logout();
-      history.push("/login");
-      return;
+  const changeColor = () => {
+    if (toggle) {
+      setColor("white");
+      setBgColor("#2a95bf");
+      setToggle(false);
+    } else {
+      setColor("#808080");
+      setBgColor("");
+      setToggle(true);
     }
+  };
+
+  const handleColor = (row) => {
+    setSelected(row.id);
+  };
+
+  const handleRoute = (route) => {
     let path = "/" + route;
-    history.push(path, { title: title });
+    history.push(path);
   };
 
   const path = history.location.pathname.substr(1);
@@ -76,11 +93,12 @@ export default function Sidebar() {
           key={list.id}
           className="button-dashboard"
           style={{
-            backgroundColor: list.title === path ? "#2a95bf" : "",
-            color: list.title === path ? "white" : "#808080",
+            backgroundColor: list.title.toLowerCase() === path.toLowerCase() ? "#2a95bf" : "",
+            color: list.title.toLowerCase() === path.toLowerCase() ? "white" : "#808080",
           }}
           onClick={() => {
-            handleRoute(list.title, list.route);
+            handleColor(list);
+            handleRoute(list.title);
           }}
         >
           {list.icon}

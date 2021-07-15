@@ -1,0 +1,13 @@
+.opt-expense {
+    position: relative;
+    justify-content: center;
+    margin-left: 280px;
+    padding: 50px;
+    width: 60%;
+}
+
+
+.opt {
+    font-size: 20px;
+    margin: 10px;
+}
