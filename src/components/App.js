@@ -9,6 +9,7 @@ import Dashboard from './dashboard/Dashboard'
 import Reports from './reports/Reports'
 import Expense from './expense/Expense'
 import Login from './login/LoginPage'
+import ForgotPassword from './login/ForgotPassword'
 import Register from './register/RegisterPage'
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
       ></Route>
       <Route exact path='/reports' component={Reports}></Route>
       <Route exact path='/expense' component={Expense}></Route>
+      <Route exact path='/forgotpassword' component={ForgotPassword}></Route>
     </div>
   )
 }
