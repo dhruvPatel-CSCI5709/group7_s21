@@ -17,6 +17,8 @@ export default function App() {
 
     if (!loginStatus) {
       history.push("/login");
+    } else {
+      history.push("/dashboard");
     }
   }, []);
 
