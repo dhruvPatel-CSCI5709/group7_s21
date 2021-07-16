@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
 import {
   ProSidebar,
@@ -39,6 +39,10 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
     setCurrentPage(pagename);
   };
 
+  useEffect(() => {
+    setPage("dashboard");
+  }, []);
+
   return (
     <ProSidebar
       className={cx("side-bar")}
@@ -50,18 +54,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
       onToggle={handleToggleSidebar}
     >
       <SidebarHeader>
-        <div
-          style={{
-            padding: "24px",
-            textTransform: "uppercase",
-            fontWeight: "bold",
-            fontSize: 14,
-            letterSpacing: "1px",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}
-        >
+        <div className={cx("header-title")}>
           {intl.formatMessage({ id: "sidebarTitle" })}
         </div>
       </SidebarHeader>
