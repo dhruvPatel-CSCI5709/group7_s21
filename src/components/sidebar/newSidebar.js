@@ -107,8 +107,8 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
           </MenuItem>
           <MenuItem
             icon={<FaGem />}
-            onClick={() => setPage("emiCalculator")}
-            className={isActive("emiCalculator") ? "active" : ""}
+            onClick={() => setPage("emicalculator")}
+            className={isActive("emicalculator") ? "active" : ""}
           >
             {" "}
             {intl.formatMessage({ id: "emiCalculator" })}
