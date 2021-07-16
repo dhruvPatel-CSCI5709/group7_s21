@@ -14,14 +14,14 @@
   border-radius: 8px;
 }
 
-.side-bar :global .pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus,
-.side-bar
-  :global
-  .pro-sidebar
-  .pro-menu
-  .pro-menu-item
-  > .pro-inner-item:hover {
-  color: white;
+.side-bar :global .pro-menu .pro-menu-item > .pro-inner-item {
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.side-bar :global .pro-menu .pro-menu-item.active > .pro-inner-item:focus,
+.side-bar :global .pro-menu .pro-menu-item.active > .pro-inner-item:hover {
+  color: #2a95bf;
 }
 
 .header-title {
