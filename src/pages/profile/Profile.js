@@ -1,16 +1,14 @@
 import React from "react";
 
 import "./Profile.css";
-import face from "../../resources/face.jpg";
-import rbcBank from "../../resources/RBCjpg.jpg";
+import face from "../../assets/face.jpg";
+import rbcBank from "../../assets/RBCjpg.jpg";
 import EditIcon from "@material-ui/icons/Edit";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import AccountBalanceTwoToneIcon from "@material-ui/icons/AccountBalanceTwoTone";
 import { useHistory } from "react-router-dom";
-import Sidebar from "../sidebar/Sidebar";
-import Header from "../header/Header";
 
 export default function Profile() {
   const history = useHistory();
@@ -22,8 +20,6 @@ export default function Profile() {
 
   return (
     <div>
-      <Header />
-      <Sidebar />
       <div className="root-profile-container">
         <div className="profile-info-finance-container">
           <div className="profile-info-container">

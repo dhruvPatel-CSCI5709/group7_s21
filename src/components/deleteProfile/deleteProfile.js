@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./DeleteProfile.css";
-import Header from "../header/Header";
 
 export default function DeleteProfile() {
   const history = useHistory();
@@ -24,7 +23,6 @@ export default function DeleteProfile() {
 
   return (
     <div>
-      <Header />
       <div className="root-div">
         <form onSubmit={handleSubmit}>
           <label for="password">

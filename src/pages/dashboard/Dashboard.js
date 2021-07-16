@@ -1,15 +1,11 @@
 import React from "react";
 import "./Dashboard.css";
-import Sidebar from "../sidebar/Sidebar";
-import Header from "../header/Header";
-import income_img from "../../resources/incomes.png";
-import expense_img from "../../resources/expenses.jpg";
+import income_img from "../../assets/incomes.png";
+import expense_img from "../../assets/expenses.jpg";
 
 export default function Dashboard() {
   return (
     <div>
-      <Header />
-      <Sidebar />
       <div className="main-dashboard">
         <div className="thought-dashboard">
           <p className="a">

@@ -4,9 +4,9 @@ import ReactToPrint from "react-to-print";
 import { PrinterOutlined, SmileOutlined } from "@ant-design/icons";
 import styles from "./Reports.module.css";
 import c from "classnames/bind";
-import CreateChart from "../../reusables/CreateChart/CreateChart";
-import Dropdown from "../../reusables/Dropdown/Dropdown";
-import Notification from "../../reusables/Notifications/Notifications";
+import CreateChart from "../../components/CreateChart/CreateChart";
+import Dropdown from "../../components/Dropdown/Dropdown";
+import Notification from "../../components/Notifications/Notifications";
 import { chartData, colors, MONTHS, notificationTypes } from "../../constants";
 import {
   dayTimelineReportMenu,
@@ -16,15 +16,15 @@ import {
   chartTypeRadio,
 } from "./configurations";
 import { daysData, monthlyData } from "./data";
-import RadioGroup from "../../reusables/RadioGroup/RadioGroup";
+import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import AnimatedNumber from "animated-number-react";
-import Sidebar from "../sidebar/Sidebar";
-import Header from "../header/Header";
 
 const cx = c.bind(styles);
 
 const Reports = () => {
-  const [reportType, setReportType] = useState(null);
+  const [reportType, setReportType] = useState(
+    reportTypeMenu.constants.CATEGORY
+  );
   const reportComponent = useRef();
   const [month, setMonth] = useState(monthlyData.length);
   const [timeline, setTimeline] = useState(timelineReportMenu.constants.MONTHS);
@@ -152,8 +152,6 @@ const Reports = () => {
 
   return (
     <div>
-      <Header title="Statistical Reports" />
-      <Sidebar />
       <div className={cx("main-container")}>
         {/* <h1 className={cx("heading")}>Statistical Reports</h1> */}
         <div className={cx("print-button")}>

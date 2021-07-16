@@ -9,7 +9,6 @@ import FunctionsTwoToneIcon from "@material-ui/icons/FunctionsTwoTone";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import "./Sidebar.css";
-import logout from "../../reusables/Logout";
 
 const lists = [
   {
@@ -93,8 +92,12 @@ export default function Sidebar() {
           key={list.id}
           className="button-dashboard"
           style={{
-            backgroundColor: list.title.toLowerCase() === path.toLowerCase() ? "#2a95bf" : "",
-            color: list.title.toLowerCase() === path.toLowerCase() ? "white" : "#808080",
+            backgroundColor:
+              list.title.toLowerCase() === path.toLowerCase() ? "#2a95bf" : "",
+            color:
+              list.title.toLowerCase() === path.toLowerCase()
+                ? "white"
+                : "#808080",
           }}
           onClick={() => {
             handleColor(list);
