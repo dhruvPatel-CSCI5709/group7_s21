@@ -1,7 +1,7 @@
 import axios from "axios";
 import api from "./api/index";
 
-axios.defaults.baseURL = "http://csci-5709-group7.herokuapp.com/api";
+axios.defaults.baseURL = "https://csci-5709-group7.herokuapp.com/api";
 //   process.env.NODE_ENV === "production" ? `` : `//localhost:8080/api`;
 axios.interceptors.request.use(
   function (config) {
