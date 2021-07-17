@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Card, Row, Col, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './LoginPage.css'
 
 const LogInWithOTP = ({ history }) => {
@@ -126,11 +127,18 @@ const LogInWithOTP = ({ history }) => {
             </Form.Group>
             <div className='error'>{otpError}</div>
 
-            <div className='mt-3' className='primary-color'>
+            <div className='primary-color mt-3'>
               <Card.Link href='/login?mode=password'>
                 Login With Password
               </Card.Link>
               <Card.Link href='#'>Resend OTP</Card.Link>
+            </div>
+            <hr />
+            <div style={{ textAlign: 'center' }} className='mt-3'>
+              Don't have an account?{' '}
+              <Link to='/register' className='primary-color'>
+                Sign Up
+              </Link>
             </div>
             <Button type='submit' className='mt-3 px-5'>
               Login
