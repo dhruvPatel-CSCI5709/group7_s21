@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './emi_view.css';
 import axios from "axios";
 import Loading from "../loading/loading";
+import loggedInUser from '../notificationUser/user';
 
 class EmiView extends Component {
     state = {
@@ -10,7 +11,7 @@ class EmiView extends Component {
     }
 
     async componentDidMount() {
-        await this.getEMIDetails("dv247596");
+        await this.getEMIDetails(loggedInUser.loggedInUserId);
         this.setState({loading: false})
         let emiViewTable = document.getElementById("emi-view-id");
         console.log(this.state.emiDates);
