@@ -15,10 +15,13 @@ class OptExpense extends Component {
 
   async componentDidMount() {
     await this.getOptDetails(loggedInUser.loggedInUserId);
-    if (this.state.is_opted === true) {
-      document.getElementById("current-status").innerText="Current status: You are currently opted-in"
-    } else {
-      document.getElementById("current-status").innerText="Current status: You are currently opted-out"
+    let statusElement = document.getElementById("current-status");
+    if (statusElement) {
+      if (this.state.is_opted === true) {
+        document.getElementById("current-status").innerText="Current status: You are currently opted-in"
+      } else {
+        document.getElementById("current-status").innerText="Current status: You are currently opted-out"
+      }
     }
   }
 
