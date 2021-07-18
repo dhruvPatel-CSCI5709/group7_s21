@@ -10,7 +10,7 @@
 
 .table-form {
     margin-top: 60px;
-    margin-left: 0px;
+    margin-left: 20px;
 }
 
 .table-form table,td,tr,th {
@@ -72,13 +72,13 @@
     justify-content: space-around;
 }
 
-.submit-button button{
+.submit-button button {
     position: relative;
     height: 43px;
     background-color: #2a95bf;
     color: white;
     margin-left: 15px;
-    width: 110px;
+    width: 100px;
 }
 
 /*

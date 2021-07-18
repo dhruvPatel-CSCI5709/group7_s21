@@ -1,0 +1,33 @@
+.opt-expense {
+    position: relative;
+    justify-content: center;
+    margin-left: 80px;
+    padding: 50px;
+    width: 60%;
+}
+
+.opt-expense table, th, td {
+    border: 0px solid black;
+    width: 70%;
+}
+
+.opt-expense th {
+    height: 80px;
+    width: 150px;
+}
+
+.opt {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.opt-table {
+    width: 300px;
+}
+
+.opt-submit {
+    width: 70%;
+    margin-left: 30px;
+    background-color: #2a95bf;
+    font-size: 20px;
+}
