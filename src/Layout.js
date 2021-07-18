@@ -9,8 +9,10 @@ import Reports from './pages/reports/Reports'
 import Expense from './pages/expense/Expense'
 import Login from './components/login/LoginPage'
 import Register from './components/register/RegisterPage'
+import NotificationHome from "./pages/notificationHome/notificationHome";
 import SetUpEMIDueDate from './pages/notification/emi_setup'
 import OptExpense from './pages/optExpense/opt_expense'
+import EmiView from "./pages/emiView/emi_view";
 import EmiCalculator from './pages/emicalculator/EmiCalculator'
 import Aside from './components/sidebar/newSidebar'
 import Main from './Main'
@@ -55,7 +57,7 @@ const Layout = () => {
         <Route exact path="/optreports" component={OptExpense} />
       </Main>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
