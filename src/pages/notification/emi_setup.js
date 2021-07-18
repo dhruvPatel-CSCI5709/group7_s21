@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./emi_setup.css";
+import axios from "axios";
+import EMISuccess from "./emi_success";
 
 export default class SetUpEMIDueDate extends Component {
   #success = 0;
@@ -16,7 +18,7 @@ export default class SetUpEMIDueDate extends Component {
     this.clearText = this.clearText.bind(this);
   }
 
-  validateForm(event) {
+  async validateForm(event) {
     event.preventDefault();
     const emi_name = document.getElementById("emi_name");
     const emi_name_str = emi_name.value;
@@ -55,6 +57,30 @@ export default class SetUpEMIDueDate extends Component {
         emi_due_date: emi_due_date_str,
       });
     }
+    const emi_amount_numeric = parseInt(emi_amount_str);
+    const emi_due_date_numeric = parseInt(emi_due_date_str);
+    console.log("All field verified");
+    await this.createEMiDetails("dv247596", "dv247596@dal.ca", emi_name_str, emi_amount_numeric, emi_due_date_numeric);
+  }
+
+  createEMiDetails = async (userId, userEmail, emiName, emiAmount, emiDueDate) => {
+    console.log("Inserting the data for emi dates");
+    const emiDatesApi = 'http://csci-5709-group7.herokuapp.com/api/emidates';
+    const emiPayload = {
+      'user_id': userId,
+      'user_email': userEmail,
+      'emi_name': emiName,
+      'emi_amount': emiAmount,
+      'emi_due_day': emiDueDate
+    }
+    console.log("Payload", emiPayload);
+    await axios.post(emiDatesApi, emiPayload)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log("Error: ", error);
+        });
   }
 
   setError(input, message) {
@@ -108,6 +134,11 @@ export default class SetUpEMIDueDate extends Component {
   }
 
   render() {
+    if(this.#success === 1) {
+      return (
+          <EMISuccess emi_name={this.state.emi_name} emi_amount={this.state.emi_amount} emi_due_date={this.state.emi_due_date}/>
+      )
+    }
     return (
       <React.Fragment>
         <div className={"table-form"}>
@@ -116,7 +147,7 @@ export default class SetUpEMIDueDate extends Component {
               &nbsp;&nbsp;&nbsp;Set up EMI due date, so that we will remind you
               about the EMI due dates
             </h4>
-            <h5>&nbsp;&nbsp;&nbsp;Please enter following details:</h5>
+            <h5>&nbsp;&nbsp;&nbsp;&nbsp;Please enter following details:</h5>
           </div>
           <table>
             <tr>
