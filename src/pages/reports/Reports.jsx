@@ -18,6 +18,8 @@ import {
 import { daysData, monthlyData } from "./data";
 import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import AnimatedNumber from "animated-number-react";
+import axios, { Routes } from "../../services/axios";
+import moment from "moment";
 
 const cx = c.bind(styles);
 
@@ -26,7 +28,7 @@ const Reports = () => {
     reportTypeMenu.constants.CATEGORY
   );
   const reportComponent = useRef();
-  const [month, setMonth] = useState(monthlyData.length);
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
   const [timeline, setTimeline] = useState(timelineReportMenu.constants.MONTHS);
   const [dayTimeline, setDayTimeline] = useState(5);
   const [chartType, setChartType] = useState(chartTypeRadio.constants.BAR);
@@ -38,32 +40,74 @@ const Reports = () => {
     if (reportType === reportTypeMenu.constants.CATEGORY) {
       setChartType(chartTypeRadio.constants.BAR);
       const data = monthlyData[month - 1];
-      generateCategoryGraph(data);
+      fetchCategorywiseReport(month);
+      // generateCategoryGraph(data);
     }
     if (reportType === reportTypeMenu.constants.TIMELINE) {
       if (timeline === timelineReportMenu.constants.MONTHS) {
-        generateExpenseReportByMonths();
+        fetchLastFiveMonthData();
       }
       if (timeline === timelineReportMenu.constants.DAYS) {
-        const data = daysData.slice(0, dayTimeline);
-        generateExpenseReportByDays(data);
+        fetchLastTenDaysData();
       }
     }
   }, [reportType, month, timeline, dayTimeline]);
 
+  const fetchCategorywiseReport = async (monthIndex) => {
+    const userId = localStorage.getItem("userId")
+      ? localStorage.getItem("userId")
+      : "";
+    try {
+      const { url, method } = Routes.api.getDataByMonth(userId);
+      const { data } = await axios[method](url, {
+        month: monthIndex,
+        year: new Date().getFullYear(),
+      });
+      generateCategoryGraph(data.data);
+    } catch (err) {
+      Notification(notificationTypes.ERROR, err.toString());
+    }
+  };
+
+  const fetchLastFiveMonthData = async () => {
+    const userId = localStorage.getItem("userId")
+      ? localStorage.getItem("userId")
+      : "";
+    try {
+      const { url, method } = Routes.api.getLastFiveMonthData(userId);
+      const { data } = await axios[method](url);
+      generateExpenseReportByMonths(data.data);
+    } catch (err) {
+      Notification(notificationTypes.ERROR, err.toString());
+    }
+  };
+
+  const fetchLastTenDaysData = async () => {
+    const userId = localStorage.getItem("userId")
+      ? localStorage.getItem("userId")
+      : "";
+    try {
+      const { url, method } = Routes.api.getLastTenDaysData(userId);
+      const { data } = await axios[method](url);
+      generateExpenseReportByDays(data.data);
+    } catch (err) {
+      Notification(notificationTypes.ERROR, err.toString());
+    }
+  };
+
   const generateCategoryGraph = (data) => {
-    if (!data) {
+    const categoryList = Object.keys(data);
+    if (categoryList.length === 0) {
       Notification(
         notificationTypes.ERROR,
         "Data for this month is not available"
       );
-      setMonth(monthlyData.length);
       return;
     }
-    const datasets = data.expenses.map((category, index) => {
+    const datasets = categoryList.map((categoryName, index) => {
       return {
-        label: category.label,
-        data: [category.expense],
+        label: categoryName,
+        data: [data[categoryName]],
         backgroundColor: [colors.backgroundColors[index]],
         borderColor: [colors.borderColors[index]],
         borderWidth: 1,
@@ -71,30 +115,38 @@ const Reports = () => {
     });
     let label = "";
     let max = 0;
-    data.expenses.map((category, index) => {
-      if (category.expense > max) {
-        max = category.expense;
-        label = category.label;
+    categoryList.map((categoryName, index) => {
+      if (data[categoryName] > max) {
+        max = data[categoryName];
+        label = categoryName;
       }
     });
     setHighestValue({ label, max });
     setDataSets({
-      labels: ["Expense Report"],
+      labels: ["Expense Report: "],
       datasets: datasets,
     });
   };
 
-  const generateExpenseReportByMonths = () => {
+  const generateExpenseReportByMonths = (data) => {
+    const monthIndexList = Object.keys(data).sort(
+      (a, b) => parseInt(a) - parseInt(b)
+    );
+    if (monthIndexList.length === 0) {
+      Notification(
+        notificationTypes.ERROR,
+        "no data available for user, Please add expense and visit here again!"
+      );
+      return;
+    }
     const datasets = [
       {
         label: "Expense Report By Months",
-        data: monthlyData.map((month, index) =>
-          month.expenses.reduce((sum, item) => sum + item.expense, 0)
-        ),
-        backgroundColor: [...Array(monthlyData.length)].map(
+        data: monthIndexList.map((monthIndex, index) => data[monthIndex]),
+        backgroundColor: [...Array(monthIndexList.length)].map(
           (_, index) => colors.backgroundColors[index]
         ),
-        borderColor: [...Array(monthlyData.length)].map(
+        borderColor: [...Array(monthIndexList.length)].map(
           (_, index) => colors.borderColors[index]
         ),
         borderWidth: 1,
@@ -102,33 +154,33 @@ const Reports = () => {
     ];
     let label = "";
     let max = 0;
-    monthlyData.map((month, index) => {
-      const total = month.expenses.reduce((sum, item) => sum + item.expense, 0);
-      if (total >= max) {
-        label = MONTHS[index];
-        max = total;
+    monthIndexList.map((monthIndex, index) => {
+      if (data[monthIndex] >= max) {
+        label = MONTHS[parseInt(monthIndex) - 1];
+        max = data[monthIndex];
       }
     });
     setHighestValue({ label, max });
     setDataSets({
-      labels: [...Array(monthlyData.length)].map((_, index) => MONTHS[index]),
+      labels: monthIndexList.map(
+        (monthIndex) => MONTHS[parseInt(monthIndex) - 1]
+      ),
       datasets: datasets,
     });
   };
 
   const generateExpenseReportByDays = (data) => {
-    data = data.reverse();
+    const dayTimeStampList = Object.keys(data)
+      .sort((a, b) => parseInt(a) - parseInt(b))
+      .slice(-dayTimeline);
     const datasets = [
       {
         label: "Expense Report By Days",
-        data: data.map(
-          (day) => day.expenses.reduce((sum, e) => sum + e.expense, 0),
-          0
-        ),
-        backgroundColor: [...Array(dayTimeline)].map(
+        data: dayTimeStampList.map((timeStamp) => data[timeStamp]),
+        backgroundColor: dayTimeStampList.map(
           (_, index) => colors.backgroundColors[index]
         ),
-        borderColor: [...Array(dayTimeline)].map(
+        borderColor: dayTimeStampList.map(
           (_, index) => colors.borderColors[index]
         ),
         borderWidth: 1,
@@ -136,16 +188,17 @@ const Reports = () => {
     ];
     let label = "";
     let max = 0;
-    data.map((day) => {
-      const total = day.expenses.reduce((sum, e) => sum + e.expense, 0);
-      if (total >= max) {
-        label = day.date;
-        max = total;
+    dayTimeStampList.map((timeStamp) => {
+      if (data[timeStamp] >= max) {
+        label = moment(parseInt(timeStamp)).format("DD MMM YY");
+        max = data[timeStamp];
       }
     });
     setHighestValue({ label, max });
     setDataSets({
-      labels: data.map((day) => day.date),
+      labels: dayTimeStampList.map((timestamp) =>
+        moment(parseInt(timestamp)).format("DD MMM YY").toString()
+      ),
       datasets: datasets,
     });
   };

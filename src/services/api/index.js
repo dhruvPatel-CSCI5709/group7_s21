@@ -2,79 +2,97 @@ export default {
   saveExpense: () => {
     return {
       url: `/expense`,
-      method: 'post',
-    }
+      method: "post",
+    };
   },
   editExpense: (expenseId) => {
     return {
       url: `/expense/${expenseId}`,
-      method: 'put',
-    }
+      method: "put",
+    };
   },
   getAllExpense: (userId) => {
     return {
       url: `/expense/${userId}`,
-      method: 'get',
-    }
+      method: "get",
+    };
   },
   deleteExpense: (expenseId) => {
     return {
       url: `/expense/${expenseId}`,
-      method: 'delete',
-    }
+      method: "delete",
+    };
   },
   getAllExpenseCategory: (userId) => {
     return {
       url: `/expense/getAllExpenseCategory/${userId}`,
-      method: 'get',
-    }
+      method: "get",
+    };
   },
   createExpenseCategory: () => {
     return {
       url: `expense/createExpenseCategory`,
-      method: 'post',
-    }
+      method: "post",
+    };
   },
   registerUser: () => {
     return {
-      url: 'users/register',
-      method: 'post',
-    }
+      url: "users/register",
+      method: "post",
+    };
   },
   loginUserWithPassword: () => {
     return {
-      url: 'users/login/password',
-      method: 'post',
-    }
+      url: "users/login/password",
+      method: "post",
+    };
   },
   loginUserWithOtp: () => {
     return {
-      url: 'users/login/otp',
-      method: 'post',
-    }
+      url: "users/login/otp",
+      method: "post",
+    };
   },
   verifyOtpLogin: () => {
     return {
-      url: 'users/login/verifyotp',
-      method: 'post',
-    }
+      url: "users/login/verifyotp",
+      method: "post",
+    };
   },
   forgotPasswrdSendOtp: () => {
     return {
-      url: 'users/forgotpassword/otp',
-      method: 'post',
-    }
+      url: "users/forgotpassword/otp",
+      method: "post",
+    };
   },
   verifyOtpForgotPassword: () => {
     return {
-      url: 'users/forgotpassword/verifyotp',
-      method: 'post',
-    }
+      url: "users/forgotpassword/verifyotp",
+      method: "post",
+    };
   },
   forgotPasswrdReset: () => {
     return {
-      url: 'users/forgotpassword/passwordReset',
-      method: 'post',
-    }
+      url: "users/forgotpassword/passwordReset",
+      method: "post",
+    };
   },
-}
+  getDataByMonth: (userId) => {
+    return {
+      url: `report/getDataByMonth/${userId}`,
+      method: "post",
+    };
+  },
+  getLastFiveMonthData: (userId) => {
+    return {
+      url: `report/getLastFiveMonthData/${userId}`,
+      method: "get",
+    };
+  },
+  getLastTenDaysData: (userId) => {
+    return {
+      url: `report/getLastTenDaysData/${userId}`,
+      method: "get",
+    };
+  },
+};
