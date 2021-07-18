@@ -1,30 +1,29 @@
-import React, { Fragment, useState } from "react";
-import { Route } from "react-router-dom";
-import DeleteProfile from "./components/deleteProfile/deleteProfile";
-import HomePage from "./pages/homePage/HomePage";
-import IncorrectPassword from "./components/incorrectPassword/IncorrectPassword";
-import Profile from "./pages/profile/Profile";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Reports from "./pages/reports/Reports";
-import Expense from "./pages/expense/Expense";
-import Login from "./components/login/LoginPage";
-import SetUpEMIDueDate from "./pages/notification/emi_setup";
-import EmiView from "./pages/emiView/emi_view";
-import NotificationHome from "./pages/notificationHome/notificationHome";
-import OptExpense from "./pages/optExpense/opt_expense";
-import EmiCalculator from "./pages/emicalculator/EmiCalculator";
-import Aside from "./components/sidebar/newSidebar";
-import Main from "./Main";
+import React, { Fragment, useState } from 'react'
+import { Route } from 'react-router-dom'
+import DeleteProfile from './components/deleteProfile/deleteProfile'
+import HomePage from './pages/homePage/HomePage'
+import IncorrectPassword from './components/incorrectPassword/IncorrectPassword'
+import Profile from './pages/profile/Profile'
+import Dashboard from './pages/dashboard/Dashboard'
+import Reports from './pages/reports/Reports'
+import Expense from './pages/expense/Expense'
+import Login from './components/login/LoginPage'
+import Register from './components/register/RegisterPage'
+import SetUpEMIDueDate from './pages/notification/emi_setup'
+import OptExpense from './pages/optExpense/opt_expense'
+import EmiCalculator from './pages/emicalculator/EmiCalculator'
+import Aside from './components/sidebar/newSidebar'
+import Main from './Main'
 
 const Layout = () => {
-  const [rtl, setRtl] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
-  const [image, setImage] = useState(true);
-  const [toggled, setToggled] = useState(false);
+  const [rtl, setRtl] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
+  const [image, setImage] = useState(true)
+  const [toggled, setToggled] = useState(false)
 
   const handleToggleSidebar = (value) => {
-    setToggled(value);
-  };
+    setToggled(value)
+  }
 
   return (
     <Fragment>
@@ -36,15 +35,16 @@ const Layout = () => {
         handleToggleSidebar={handleToggleSidebar}
       />
       <Main handleToggleSidebar={handleToggleSidebar}>
-        <Route exact path="/reports" component={Reports}></Route>
-        <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/deleteProfile" component={DeleteProfile}></Route>
-        <Route exact path="/profile" component={Profile}></Route>
-        <Route exact path="/Dashboard" component={Dashboard}></Route>
+        <Route exact path='/reports' component={Reports}></Route>
+        <Route exact path='/login' component={Login}></Route>
+        <Route exact path='/register' component={Register}></Route>
+        <Route exact path='/' component={HomePage} />
+        <Route exact path='/deleteProfile' component={DeleteProfile}></Route>
+        <Route exact path='/profile' component={Profile}></Route>
+        <Route exact path='/Dashboard' component={Dashboard}></Route>
         <Route
           exact
-          path="/incorrectPassword"
+          path='/incorrectPassword'
           component={IncorrectPassword}
         ></Route>
         <Route exact path="/expense" component={Expense}></Route>
@@ -55,7 +55,7 @@ const Layout = () => {
         <Route exact path="/optreports" component={OptExpense} />
       </Main>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
