@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import './emi_view.css';
 import axios from "axios";
+import Loading from "../loading/loading";
 
 class EmiView extends Component {
     state = {
-        emiDates: []
+        emiDates: [],
+        loading: true
     }
 
     async componentDidMount() {
         await this.getEMIDetails("dv247596");
+        this.setState({loading: false})
         let emiViewTable = document.getElementById("emi-view-id");
         console.log(this.state.emiDates);
         for (let i = 0; i < this.state.emiDates.length; i++) {
@@ -53,7 +56,9 @@ class EmiView extends Component {
     }
 
     render() {
-        console.log("Render...");
+        if (this.state.loading) {
+            return <Loading />
+        }
         return (
             <div className={"emi-view"}>
                 List of EMI due dates set by user:<br/><br/>
