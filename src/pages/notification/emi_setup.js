@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./emi_setup.css";
 import axios from "axios";
 import EMISuccess from "./emi_success";
+import loggedInUser from '../notificationUser/user';
 
 export default class SetUpEMIDueDate extends Component {
   #success = 0;
@@ -60,7 +61,7 @@ export default class SetUpEMIDueDate extends Component {
     const emi_amount_numeric = parseInt(emi_amount_str);
     const emi_due_date_numeric = parseInt(emi_due_date_str);
     console.log("All field verified");
-    await this.createEMiDetails("dv247596", "dv247596@dal.ca", emi_name_str, emi_amount_numeric, emi_due_date_numeric);
+    await this.createEMiDetails(loggedInUser.loggedInUserId, loggedInUser.loggedInUserEmail, emi_name_str, emi_amount_numeric, emi_due_date_numeric);
   }
 
   createEMiDetails = async (userId, userEmail, emiName, emiAmount, emiDueDate) => {
@@ -113,11 +114,7 @@ export default class SetUpEMIDueDate extends Component {
   }
 
   checkNotEmpty(value) {
-    if (value.trim() === "") {
-      return false;
-    }
-
-    return true;
+    return value.trim() !== "";
   }
 
   clearText() {

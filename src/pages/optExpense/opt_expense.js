@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./opt_expense.css";
 import OPTSuccess from "./optSuccess";
 import axios from "axios";
+import loggedInUser from '../notificationUser/user';
 
 class OptExpense extends Component {
   #success = 0;
@@ -13,7 +14,7 @@ class OptExpense extends Component {
   }
 
   async componentDidMount() {
-    await this.getOptDetails("dv247596");
+    await this.getOptDetails(loggedInUser.loggedInUserId);
     if (this.state.is_opted === true) {
       document.getElementById("current-status").innerText="Current status: You are currently opted-in"
     } else {
@@ -43,7 +44,7 @@ class OptExpense extends Component {
       choiceValue = "Opted-in for expense report"
     }
     this.#success=1;
-    await this.updateOptReport("dv247596", "dv247596@dal.ca", optionSelected);
+    await this.updateOptReport(loggedInUser.loggedInUserId, loggedInUser.loggedInUserEmail, optionSelected);
     this.setState({ redirect: true, choice: choiceValue});
   }
 
