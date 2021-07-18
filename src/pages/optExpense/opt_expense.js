@@ -81,7 +81,7 @@ class OptExpense extends Component {
     return (
       <div>
         <div className={"opt-expense"}>
-          <h4 id={"current-status"}></h4>
+          <h4 id={"current-status"}>--</h4>
           <h4>
             Do you want to receive periodic updates about your expense report?
             We will send them via email and SMS on daily, weekly and monthly if you choose to Opt-in
