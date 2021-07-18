@@ -61,7 +61,7 @@ export const chartData = {
     plugins: {
       datalabels: {
         color: "#0162c3",
-        formatter: (value) => "$" + value,
+        formatter: (value) => (value === 0 ? null : "$" + value),
         font: {
           weight: "bold",
         },
