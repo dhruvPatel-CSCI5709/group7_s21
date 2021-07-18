@@ -8,7 +8,6 @@ class EmiView extends Component {
     }
 
     async componentDidMount() {
-        console.log("Component mount");
         await this.getEMIDetails("dv247596");
         let emiViewTable = document.getElementById("emi-view-id");
         console.log(this.state.emiDates);
