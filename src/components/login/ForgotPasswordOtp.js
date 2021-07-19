@@ -77,7 +77,6 @@ const ForgotPasswordOtp = ({ history }) => {
         const { data } = await axios[method](url, { email })
         if (data.success) {
           Notification(notificationTypes.SUCCESS, 'OTP sent to your Email ID')
-          localStorage.setItem('userEmail', email)
           setButtonClicked(true)
         } else {
           Notification(notificationTypes.ERROR, 'OTP could not be sent')
@@ -99,6 +98,7 @@ const ForgotPasswordOtp = ({ history }) => {
 
         if (data.success) {
           Notification(notificationTypes.SUCCESS, data.message)
+          localStorage.setItem('userEmail', email)
           history.push('/forgotpassword/passwordReset')
         } else {
           Notification(notificationTypes.ERROR, data.message)
