@@ -85,10 +85,10 @@ const LogInWithPassword = ({ history }) => {
             </Form.Group>
             <div className='error'>{passwordError}</div>
             <div className='mt-3'>
-              <Card.Link href='#' className='primary-color'>
+              <Card.Link href='/login?mode=otp' className='primary-color'>
                 Login With OTP
               </Card.Link>
-              <Card.Link href='#' className='primary-color'>
+              <Card.Link href='/forgotpassword/otp' className='primary-color'>
                 Forgot Password
               </Card.Link>
             </div>
