@@ -20,7 +20,7 @@ export default function App() {
       setLoginStatus(false)
     } else {
       setLoginStatus(true)
-      history.push('/dashboard')
+      history.push('/Dashboard')
     }
   }, [])
 

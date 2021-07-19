@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard/Dashboard'
 import Reports from './pages/reports/Reports'
 import Expense from './pages/expense/Expense'
 import Login from './components/login/LoginPage'
+import Logout from './components/logout/LogoutPage'
 import Register from './components/register/RegisterPage'
 import NotificationHome from './pages/notificationHome/notificationHome'
 import SetUpEMIDueDate from './pages/notification/emi_setup'
@@ -70,6 +71,7 @@ const Layout = ({ loginStatus }) => {
             <Route exact path='/emisetup' component={SetUpEMIDueDate} />
             <Route exact path='/emiview' component={EmiView} />
             <Route exact path='/optreports' component={OptExpense} />
+            <Route exact path='/logout' component={Logout} />
           </Switch>
         ) : (
           <Switch>
