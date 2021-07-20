@@ -100,8 +100,9 @@ const LogInWithOTP = ({ history }) => {
             notificationTypes.SUCCESS,
             'OTP verified! Login Success!'
           )
-          localStorage.setItem('userEmail', email)
-          localStorage.setItem('loginStatus', true)
+          if (data.token) {
+            localStorage.setItem('token', data.token)
+          }
           history.push('/Dashboard')
           window.location.reload(false)
         } else {

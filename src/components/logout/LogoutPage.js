@@ -6,6 +6,7 @@ const LogoutPage = () => {
 
   useEffect(() => {
     localStorage.removeItem('loginStatus')
+    localStorage.removeItem('token')
     history.push('/login')
     window.location.reload(false)
   }, [])
