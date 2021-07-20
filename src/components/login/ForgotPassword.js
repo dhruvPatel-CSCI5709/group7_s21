@@ -3,6 +3,9 @@ import { Button, Form, Card, Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import forgotPasswordImg from '../../img/forgot_password_img.png'
 import './LoginPage.css'
+import Notification from '../../components/Notifications/Notifications'
+import { notificationTypes } from '../../constants'
+import axios, { Routes } from '../../services/axios'
 
 const ForgotPassword = ({ history }) => {
   const [password, setPassword] = useState('')
@@ -40,12 +43,30 @@ const ForgotPassword = ({ history }) => {
     return true
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()
     if (isValid) {
       setInitErrorState()
-      alert('Password Reset Successful!')
+      try {
+        setInitErrorState()
+        const email = localStorage.getItem('userEmail')
+        localStorage.removeItem('userEmail')
+        const { url, method } = Routes.api.forgotPasswrdReset()
+        const { data } = await axios[method](url, {
+          email,
+          newPassword: password,
+        })
+
+        if (data.success) {
+          Notification(notificationTypes.SUCCESS, data.message)
+          history.push('/login')
+        } else {
+          Notification(notificationTypes.ERROR, 'Password Reset Failed!')
+        }
+      } catch (err) {
+        Notification(notificationTypes.ERROR, err)
+      }
     }
   }
 
