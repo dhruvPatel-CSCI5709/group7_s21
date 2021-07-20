@@ -77,7 +77,6 @@ const LogInWithOTP = ({ history }) => {
         const { data } = await axios[method](url, { email })
         if (data.success) {
           Notification(notificationTypes.SUCCESS, 'OTP sent to your Email ID')
-          // localStorage.setItem('userEmail', email)
           setButtonClicked(true)
         } else {
           Notification(notificationTypes.ERROR, 'OTP could not be sent')
@@ -104,8 +103,8 @@ const LogInWithOTP = ({ history }) => {
           localStorage.setItem('userEmail', email)
           localStorage.setItem('loginStatus', true)
           history.push('/Dashboard')
+          window.location.reload(false)
         } else {
-          console.log('Inside else')
           Notification(notificationTypes.ERROR, 'Invalid OTP! Login Failed!')
         }
         setInitErrorState()
