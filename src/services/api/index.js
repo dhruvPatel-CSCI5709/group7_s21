@@ -77,4 +77,10 @@ export default {
       method: 'post',
     }
   },
+  emiCalculate: () => {
+    return {
+      url: `emicalculator/emicalculate`,
+      method: 'get',
+    }
+  },
 }
