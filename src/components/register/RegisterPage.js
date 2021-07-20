@@ -108,8 +108,13 @@ const RegisterPage = ({ history }) => {
         const name = firstName + ' ' + lastName
         const { url, method } = Routes.api.registerUser()
         const { data } = await axios[method](url, { name, email, password })
-        localStorage.setItem('user', JSON.stringify(data.data))
-        Notification(notificationTypes.SUCCESS, 'User Successfully Registered')
+
+        if (data.success) {
+          Notification(notificationTypes.SUCCESS, 'Register Successful')
+          history.push('/login')
+        } else {
+          Notification(notificationTypes.ERROR, data.message)
+        }
       } catch (err) {
         Notification(notificationTypes.ERROR, err)
       }
