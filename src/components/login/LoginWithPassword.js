@@ -62,6 +62,9 @@ const LogInWithPassword = ({ history }) => {
           Notification(notificationTypes.SUCCESS, 'Login Success!')
           localStorage.setItem('user', data.data)
           localStorage.setItem('loginStatus', true)
+          if (data.token) {
+            localStorage.setItem('token', data.token)
+          }
           history.push('/Dashboard')
           window.location.reload(false)
         } else {

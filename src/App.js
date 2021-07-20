@@ -14,7 +14,7 @@ export default function App() {
   const [loginStatus, setLoginStatus] = useState(false)
 
   useEffect(() => {
-    const status = localStorage.getItem('loginStatus')
+    const status = localStorage.getItem('token')
 
     if (!status) {
       setLoginStatus(false)
