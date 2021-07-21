@@ -54,7 +54,7 @@ const ForgotPassword = ({ history }) => {
         localStorage.removeItem('userEmail')
         const { url, method } = Routes.api.forgotPasswrdReset()
         const { data } = await axios[method](url, {
-          email,
+          email: email.toLowerCase(),
           newPassword: password,
         })
 

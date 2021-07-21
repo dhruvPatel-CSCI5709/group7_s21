@@ -57,7 +57,10 @@ const LogInWithPassword = ({ history }) => {
       history.push('/Dashboard')
       try {
         const { url, method } = Routes.api.loginUserWithPassword()
-        const { data } = await axios[method](url, { email, password })
+        const { data } = await axios[method](url, {
+          email: email.toLowerCase(),
+          password,
+        })
         if (data.success) {
           Notification(notificationTypes.SUCCESS, 'Login Success!')
           localStorage.setItem('user', data.data)
