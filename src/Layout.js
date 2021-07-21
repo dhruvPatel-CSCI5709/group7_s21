@@ -7,6 +7,7 @@ import Profile from "./pages/profile/Profile";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Reports from "./pages/reports/Reports";
 import Expense from "./pages/expense/Expense";
+import Income from "./pages/income/Income";
 import Login from "./components/login/LoginPage";
 import SetUpEMIDueDate from "./pages/notification/emi_setup";
 import OptExpense from "./pages/notification/opt_expense";
@@ -40,6 +41,7 @@ const Layout = () => {
         <Route exact path="/deleteProfile" component={DeleteProfile}></Route>
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/Dashboard" component={Dashboard}></Route>
+        <Route exact path="/income" component={Income}></Route>
         <Route
           exact
           path="/incorrectPassword"
