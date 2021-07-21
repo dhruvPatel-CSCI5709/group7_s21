@@ -1,37 +1,61 @@
 import React from "react";
+import { Component } from "react";
 import "./EmiCalculator.css";
 import axios, { Routes } from "../../services/axios";
+import Table from 'react-bootstrap/Table'
 
-export default class EmiCalculator {
-  constructor(props) {
-    super(props)
+export default class EmiCalculator extends Component {
+  constructor(props){
+    super(props);
+
     this.state = {
-      //no needed.
+      data: null,
+      isOpen: false
     }
   }
 
-  onSubmitForm = e => {
+  
+  resetEMIData = () => {
+    this.setState({data : null})
+
+  }
+  onSubmitForm = async (e) =>  {
     e.preventDefault()
     const formData = new FormData(e.target)
     const body = {}
     formData.forEach((value, property) => body[property] = value)
-    //here you can update, remove, add values/properties in the body object this is specially usefull if any custom process must be done to check, encrypt data or wherever you want.
-    console.table(body)
-    // Request goes here.
+    console.log(body)
+    
+    try {
+      const { url, method } = Routes.api.emiCalculate();
+      const { data } = await axios[method](url, body);
+      console.log(data)
+      this.setState({data: data})
+      this.setState({isOpen: true})
+
+    } catch (err) {
+      console.log(err) 
+    } 
   }
-  render() {
+
+  toggleModal (isOpen) {
+    this.setState({isOpen:isOpen});
+  }
+
+  render(){
+
     return (
       <div>
         <div className="form-wrapper">
           <h1>EMI Calculator</h1>
-          <form onSubmit = {e => this.onSubmitForm(e)}>
+          <form onSubmit={e => this.onSubmitForm(e)}>
             <div className="loancategory">
               <label htmlFor="loancategory">Loan Category</label>
               <input
                 placeholder="Loan Category"
                 type="text"
                 required="required"
-                name="loancategory"
+                name="loanCategory"
               />
             </div>
             <div className="amount">
@@ -49,7 +73,7 @@ export default class EmiCalculator {
                 placeholder="Interest rate"
                 type="number"
                 required="required"
-                name="interestrate"
+                name="interestRate"
               />
             </div>
             <div className="period">
@@ -65,11 +89,31 @@ export default class EmiCalculator {
               <button type="submit">Calculate</button>
             </div>
             <div className="reset">
-              <button type="reset">Reset</button>
+              <button type="reset" onClick={this.resetEMIData}>Reset</button>
             </div>
           </form>
         </div>
+        <div class="emitable">
+          <Table striped bordered hover class="table table-sm">
+            <tbody>
+              <tr>
+                <td><h4>Monthly EMI</h4></td>
+                <td>{this.state.data ? <h4>{this.state.data.emiModel.monthlyEMI.toFixed(2)}</h4>: null}</td>
+              </tr>
+              <tr>
+                <td><h4>Total Interest</h4></td>
+                <td>{this.state.data ? <h4>{this.state.data.emiModel.totalInterest.toFixed(2)}</h4>: null}</td>
+              </tr>
+              <tr>
+                <td><h4>Total Payment</h4></td>
+                <td>{this.state.data ? <h4>{this.state.data.emiModel.totalPayment.toFixed(2)}</h4>: null}</td>
+              </tr>
+            </tbody>
+          </Table> 
+        </div>
+        
       </div>
     );
-    }
+  }
+  
 }

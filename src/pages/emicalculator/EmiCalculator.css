@@ -37,6 +37,8 @@
     font-weight: lighter;
     font-family: sans-serif;
   }
+
+
   
   label {
     font-size: 0.8em;
@@ -145,4 +147,10 @@
   .reset small {
     color: #999;
     font-weight: lighter;
+  }
+
+  .emitable{
+    width: 450px;
+    height: 50px;
+    margin: 10px;
   }

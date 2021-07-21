@@ -81,7 +81,7 @@ export default {
   emiCalculate: () => {
     return {
       url: `emicalculator/emicalculate`,
-      method: 'get',
+      method: 'post',
     }
   },
 }
