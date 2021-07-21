@@ -10,7 +10,7 @@ import Expense from "./pages/expense/Expense";
 import Income from "./pages/income/Income";
 import Login from "./components/login/LoginPage";
 import SetUpEMIDueDate from "./pages/notification/emi_setup";
-import OptExpense from "./pages/notification/opt_expense";
+import OptExpense from "./pages/optExpense/opt_expense";
 import EmiCalculator from "./pages/emicalculator/EmiCalculator";
 import Aside from "./components/sidebar/newSidebar";
 import Main from "./Main";
@@ -63,6 +63,7 @@ const Layout = ({ loginStatus }) => {
               component={IncorrectPassword}
             ></Route>
             <Route exact path="/expense" component={Expense}></Route>
+            <Route exact path="/income" component={Income}></Route>
             <Route
               exact
               path="/emicalculator"
