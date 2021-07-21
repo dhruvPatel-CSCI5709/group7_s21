@@ -1,3 +1,7 @@
+/*
+ * Author: Devraj Singh
+ */
+
 import React, {Component} from 'react';
 import './notificationHome.css';
 import {Link} from 'react-router-dom';

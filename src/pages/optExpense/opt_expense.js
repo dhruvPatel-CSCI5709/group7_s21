@@ -1,3 +1,7 @@
+/*
+ * Author: Devraj Singh
+ */
+
 import React, { Component } from "react";
 import "./opt_expense.css";
 import OPTSuccess from "./optSuccess";
@@ -26,7 +30,7 @@ class OptExpense extends Component {
   }
 
   getOptDetails = async userId =>  {
-    const optReportApi = 'http://csci-5709-group7.herokuapp.com/api/optreports';
+    const optReportApi = 'https://csci-5709-group7.herokuapp.com/api/optreports';
     const res = await axios.get(`${optReportApi}/${userId}`);
     if (res.data.success !== true) {
       console.log("Optreports api call failed");
@@ -52,8 +56,8 @@ class OptExpense extends Component {
   }
 
   async updateOptReport(userID, userEmail, is_opted) {
-    const optReportApiPost = 'http://csci-5709-group7.herokuapp.com/api/optreports';
-    const optReportApiPut = `http://csci-5709-group7.herokuapp.com/api/optreports/${userID}`;
+    const optReportApiPost = 'https://csci-5709-group7.herokuapp.com/api/optreports';
+    const optReportApiPut = `https://csci-5709-group7.herokuapp.com/api/optreports/${userID}`;
     const optReportApiPayload = {
       'user_id': userID,
       'user_email': userEmail,

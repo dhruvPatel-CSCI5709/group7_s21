@@ -1,3 +1,7 @@
+/*
+ * Author: Devraj Singh
+*/
+
 import React, {Component} from 'react';
 import './emi_view.css';
 import axios from "axios";
@@ -35,7 +39,7 @@ class EmiView extends Component {
                 document.getElementById("emi-view-id").deleteRow(rowIndex);
                 console.log("Deleted row number: ", rowIndex);
                 console.log("Deleted emi-id:", emi_id)
-                const emiDatesApi = 'http://csci-5709-group7.herokuapp.com/api/emidates';
+                const emiDatesApi = 'https://csci-5709-group7.herokuapp.com/api/emidates';
                 const res = await axios.delete(`${emiDatesApi}/${emi_id}`);
                 console.log("Response: ", res);
             }
@@ -44,7 +48,7 @@ class EmiView extends Component {
     }
 
     getEMIDetails = async userId =>  {
-        const emiDatesApi = 'http://csci-5709-group7.herokuapp.com/api/emidates';
+        const emiDatesApi = 'https://csci-5709-group7.herokuapp.com/api/emidates';
         const res = await axios.get(`${emiDatesApi}/${userId}`);
         if (res.data.success !== true) {
             console.log("EmiDates api call failed");
