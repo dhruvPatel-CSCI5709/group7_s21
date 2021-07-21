@@ -7,7 +7,6 @@ import Profile from "./pages/profile/Profile";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Reports from "./pages/reports/Reports";
 import Expense from "./pages/expense/Expense";
-import Income from "./pages/income/Income";
 import Login from "./components/login/LoginPage";
 import Logout from "./components/logout/LogoutPage";
 import Register from "./components/register/RegisterPage";
@@ -62,7 +61,6 @@ const Layout = ({ loginStatus }) => {
               path="/incorrectPassword"
               component={IncorrectPassword}
             ></Route>
-            <Route exact path="/income" component={Income}></Route>
             <Route exact path="/expense" component={Expense}></Route>
             <Route
               exact
