@@ -149,6 +149,7 @@ function Income() {
       return;
     }
     try {
+      console.log("Welcome to goa singham");
       const { url, method } = Routes.api.createIncomeCategory();
       const { data } = await axios[method](url, {
         name: createCategoryName,

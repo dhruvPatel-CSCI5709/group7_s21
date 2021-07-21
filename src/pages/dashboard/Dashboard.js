@@ -156,7 +156,7 @@ export default function Dashboard() {
               {incomes === null ? (
                 <p></p>
               ) : incomes.length === 0 ? (
-                <p>No user available</p>
+                <p></p>
               ) : (
                 <>
                   {incomes.map((income, index) => (
@@ -205,7 +205,7 @@ export default function Dashboard() {
               {expenses === null ? (
                 <p></p>
               ) : expenses.length === 0 ? (
-                <p>No user available</p>
+                <p></p>
               ) : (
                 <>
                   {expenses.map((expense, index) => (
