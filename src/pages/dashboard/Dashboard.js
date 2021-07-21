@@ -154,7 +154,7 @@ export default function Dashboard() {
                 Your recent incomes
               </div>
               {incomes === null ? (
-                <p>Loading...</p>
+                <p></p>
               ) : incomes.length === 0 ? (
                 <p>No user available</p>
               ) : (
@@ -203,7 +203,7 @@ export default function Dashboard() {
                 Your recent expenses
               </div>
               {expenses === null ? (
-                <p>Loading...</p>
+                <p></p>
               ) : expenses.length === 0 ? (
                 <p>No user available</p>
               ) : (
