@@ -122,15 +122,18 @@ const ForgotPasswordOtp = ({ history }) => {
           <img className='w-100' src={forgotPasswordImg} alt='' />
         </Col>
         <Col lg={4} md={6} sm={12} className='mt-5'>
-          <Card style={{ width: '22rem', marginTop: '2rem' }}>
-            <Card.Body>
+          <Card
+            style={{ width: '22rem', marginTop: '2rem' }}
+            className='m-auto mb-3'
+          >
+            <Card.Body className='m-auto'>
               <h1 style={{ textAlign: 'center' }} className='primary-color'>
                 Forgot Password
               </h1>
               <hr />
               <Form onSubmit={submitHandler}>
                 {buttonClicked ? (
-                  <div>
+                  <div className='w-100'>
                     <Form.Group className='mt-3'>
                       <Form.Control
                         type='text'
@@ -140,16 +143,16 @@ const ForgotPasswordOtp = ({ history }) => {
                       />
                     </Form.Group>
                     <div className='error'>{otpError}</div>
-
-                    <hr />
-
-                    <Button type='submit' className='mt-3 px-5'>
-                      Verify OTP
-                    </Button>
+                    <div className='text-center'>
+                      <Button type='submit' className='mt-3 px-3'>
+                        Verify OTP
+                      </Button>
+                    </div>
+                    <br />
                   </div>
                 ) : (
-                  <Row>
-                    <Col md={9}>
+                  <Row className='m-auto'>
+                    <Col md={8}>
                       <Form.Group controlId='email' className='my-3'>
                         <Form.Control
                           placeholder='Email Address'
@@ -160,16 +163,15 @@ const ForgotPasswordOtp = ({ history }) => {
                         <div className='error'>{emailError}</div>
                       </Form.Group>
                     </Col>
-                    <Col md={3}>
-                      {' '}
-                      <Button className='mt-2' onClick={clickHandler}>
+                    <Col md={4} className='m-auto'>
+                      <Button onClick={clickHandler} className='px-3'>
                         OTP
                       </Button>
                     </Col>
                   </Row>
                 )}
-                <hr />
-                <div style={{ textAlign: 'center' }} className='my-2'>
+
+                <div className='my-2 w-100 text-center'>
                   Changed your mind?{' '}
                   <Link to='/login' className='primary-color'>
                     Sign In
