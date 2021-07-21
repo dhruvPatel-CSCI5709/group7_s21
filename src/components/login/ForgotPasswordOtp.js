@@ -79,7 +79,7 @@ const ForgotPasswordOtp = ({ history }) => {
           Notification(notificationTypes.SUCCESS, 'OTP sent to your Email ID')
           setButtonClicked(true)
         } else {
-          Notification(notificationTypes.ERROR, 'OTP could not be sent')
+          Notification(notificationTypes.ERROR, data.message)
         }
         setInitErrorState()
       } catch (err) {
