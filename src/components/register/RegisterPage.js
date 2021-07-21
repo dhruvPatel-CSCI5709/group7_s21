@@ -127,7 +127,12 @@ const RegisterPage = ({ history }) => {
         <Col lg={8} md={6} sm={12}>
           <img className='w-100' src={uiImg} alt='' />
         </Col>
-        <Col lg={4} md={6} sm={12} className='mt-5'>
+        <Col
+          lg={4}
+          md={6}
+          sm={12}
+          className='mt-5 d-flex justify-content-center'
+        >
           <Card style={{ width: '22rem', marginTop: '2rem' }}>
             <Card.Body>
               <h1 style={{ textAlign: 'center' }} className='primary-color'>
@@ -135,7 +140,7 @@ const RegisterPage = ({ history }) => {
               </h1>
               <hr />
               <Form onSubmit={submitHandler}>
-                <Form.Group controlId='firstName' className='my-3'>
+                <Form.Group controlId='firstName' className='my-2 w-100'>
                   <Form.Control
                     type='text'
                     placeholder='First Name'
@@ -145,7 +150,7 @@ const RegisterPage = ({ history }) => {
                   ></Form.Control>
                   <div className='error'>{firstNameError}</div>
                 </Form.Group>
-                <Form.Group controlId='lastName' className='my-3'>
+                <Form.Group controlId='lastName' className='my-2 w-100'>
                   <Form.Control
                     type='text'
                     placeholder='Last Name'
@@ -155,7 +160,7 @@ const RegisterPage = ({ history }) => {
                   ></Form.Control>
                   <div className='error'>{lastNameError}</div>
                 </Form.Group>
-                <Form.Group controlId='email' className='my-3'>
+                <Form.Group controlId='email' className='my-2 w-100'>
                   <Form.Control
                     placeholder='Email Address'
                     value={email}
@@ -164,7 +169,7 @@ const RegisterPage = ({ history }) => {
                   ></Form.Control>
                   <div className='error'>{emailError}</div>
                 </Form.Group>
-                <Form.Group controlId='password' className='my-3'>
+                <Form.Group controlId='password' className='my-2 w-100'>
                   <Form.Control
                     type='password'
                     placeholder='Password'
@@ -173,7 +178,7 @@ const RegisterPage = ({ history }) => {
                   ></Form.Control>
                   <div className='error'>{passwordError}</div>
                 </Form.Group>
-                <Form.Group controlId='password2' className='my-3'>
+                <Form.Group controlId='password2' className='my-2 w-100'>
                   <Form.Control
                     type='password'
                     placeholder='Confirm Password'
@@ -182,17 +187,16 @@ const RegisterPage = ({ history }) => {
                   ></Form.Control>
                   <div className='error'>{password2Error}</div>
                 </Form.Group>
-                <hr />
-                <div style={{ textAlign: 'center' }} className='my-2'>
+                <div className='w-100 text-center mt-2'>
+                  <Button type='submit' className='my-2 px-5'>
+                    Register
+                  </Button>
+                </div>
+                <div style={{ textAlign: 'center' }} className='my-2 w-100'>
                   Already have an account?{' '}
                   <Link to='/login' className='primary-color'>
                     Sign In
                   </Link>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                  <Button type='submit' className='my-2 px-5'>
-                    Register
-                  </Button>
                 </div>
               </Form>
             </Card.Body>
