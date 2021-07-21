@@ -162,5 +162,5 @@
 .profile-info-card-viewAll-dashboard {
   display: flex;
   float: left;
-  justify-content: center;
+  margin-left: 67px;
 }
