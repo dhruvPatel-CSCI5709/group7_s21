@@ -1,3 +1,7 @@
+/*
+ * Author: Devraj Singh
+ */
+
 import React from 'react';
 import loading from "./loading.gif";
 

@@ -1,3 +1,7 @@
+/*
+ * Author: Devraj Singh
+ */
+
 import React, { Component } from "react";
 import "./emi_setup.css";
 import axios from "axios";
