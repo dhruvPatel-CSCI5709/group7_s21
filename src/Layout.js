@@ -22,16 +22,16 @@ import ForgotPasswordOtp from "./components/login/ForgotPasswordOtp";
 import Main from "./Main";
 
 const Layout = ({ loginStatus }) => {
-  const [rtl, setRtl] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
-  const [image, setImage] = useState(true);
-  const [toggled, setToggled] = useState(false);
+  const [rtl, setRtl] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
+  const [image, setImage] = useState(true)
+  const [toggled, setToggled] = useState(false)
 
   const handleToggleSidebar = (value) => {
-    setToggled(value);
-  };
+    setToggled(value)
+  }
 
-  console.log("login status", loginStatus);
+  console.log('login status', loginStatus)
 
   return (
     <Fragment>
@@ -48,52 +48,53 @@ const Layout = ({ loginStatus }) => {
       <Main handleToggleSidebar={handleToggleSidebar}>
         {loginStatus ? (
           <Switch>
-            <Route exact path="/reports" component={Reports}></Route>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path='/reports' component={Reports}></Route>
+            <Route exact path='/' component={HomePage} />
             <Route
               exact
-              path="/deleteProfile"
+              path='/deleteProfile'
               component={DeleteProfile}
             ></Route>
-            <Route exact path="/profile" component={Profile}></Route>
-            <Route exact path="/Dashboard" component={Dashboard}></Route>
+            <Route exact path='/profile' component={Profile}></Route>
+            <Route exact path='/Dashboard' component={Dashboard}></Route>
             <Route
               exact
-              path="/incorrectPassword"
+              path='/incorrectPassword'
               component={IncorrectPassword}
             ></Route>
             <Route exact path="/income" component={Income}></Route>
             <Route exact path="/expense" component={Expense}></Route>
+
             <Route
               exact
-              path="/emicalculator"
+              path='/emicalculator'
               component={EmiCalculator}
             ></Route>
-            <Route exact path="/notifications" component={NotificationHome} />
-            <Route exact path="/emisetup" component={SetUpEMIDueDate} />
-            <Route exact path="/emiview" component={EmiView} />
-            <Route exact path="/optreports" component={OptExpense} />
-            <Route exact path="/logout" component={Logout} />
+            <Route exact path='/notifications' component={NotificationHome} />
+            <Route exact path='/emisetup' component={SetUpEMIDueDate} />
+            <Route exact path='/emiview' component={EmiView} />
+            <Route exact path='/optreports' component={OptExpense} />
+            <Route exact path='/logout' component={Logout} />
           </Switch>
         ) : (
           <Switch>
-            <Route exact path="/register" component={Register}></Route>
+            <Route exact path='/register' component={Register}></Route>
             <Route
               exact
-              path="/forgotpassword/otp"
+              path='/forgotpassword/otp'
               component={ForgotPasswordOtp}
             />
             <Route
               exact
-              path="/forgotpassword/passwordReset"
+              path='/forgotpassword/passwordReset'
               component={ForgotPassword}
             />
-            <Route path="/" component={Login}></Route>
+            <Route path='/' component={Login}></Route>
           </Switch>
         )}
       </Main>
     </Fragment>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
