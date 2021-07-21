@@ -8,6 +8,7 @@ export default {
     profile: "PROFILE",
     reports: "REPORTS",
     expense: "EXPENSE",
+    income: "INCOME",
     emiCalculator: "EMI CALCULATOR",
     logout: "LOGOUT",
     dropdown: "Dropdown",

@@ -46,11 +46,23 @@ const Aside = ({
     setCurrentPage(pagename)
   }
 
+  // useEffect(() => {
+  //   console.log(path);
+  //   setPage(history.location.pathname.substr(1));
+  // }, [history]);
+
   useEffect(() => {
     if (loginStatus) {
       setPage('dashboard')
     }
   }, [])
+
+  useEffect(() => {
+    history.listen((location, action) => {
+      console.log("routing.........");
+      setCurrentPage(location.pathname.substr(1));
+    });
+  }, [history]);
 
   return (
     <ProSidebar
@@ -105,6 +117,14 @@ const Aside = ({
           >
             {' '}
             {intl.formatMessage({ id: 'reports' })}
+          </MenuItem>
+          <MenuItem
+            onClick={() => setPage("income")}
+            className={isActive("income") ? "active" : ""}
+            icon={<FaGem />}
+          >
+            {" "}
+            {intl.formatMessage({ id: "income" })}
           </MenuItem>
           <MenuItem
             icon={<FaGem />}
