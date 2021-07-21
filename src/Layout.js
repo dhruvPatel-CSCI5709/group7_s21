@@ -1,24 +1,25 @@
-import React, { Fragment, useState } from 'react'
-import { Route, Switch } from 'react-router-dom'
-import DeleteProfile from './components/deleteProfile/deleteProfile'
-import HomePage from './pages/homePage/HomePage'
-import IncorrectPassword from './components/incorrectPassword/IncorrectPassword'
-import Profile from './pages/profile/Profile'
-import Dashboard from './pages/dashboard/Dashboard'
-import Reports from './pages/reports/Reports'
-import Expense from './pages/expense/Expense'
-import Login from './components/login/LoginPage'
-import Logout from './components/logout/LogoutPage'
-import Register from './components/register/RegisterPage'
-import NotificationHome from './pages/notificationHome/notificationHome'
-import SetUpEMIDueDate from './pages/notification/emi_setup'
-import OptExpense from './pages/optExpense/opt_expense'
-import EmiView from './pages/emiView/emi_view'
-import EmiCalculator from './pages/emicalculator/EmiCalculator'
-import Aside from './components/sidebar/newSidebar'
-import ForgotPassword from './components/login/ForgotPassword'
-import ForgotPasswordOtp from './components/login/ForgotPasswordOtp'
-import Main from './Main'
+import React, { Fragment, useState } from "react";
+import { Route, Switch } from "react-router-dom";
+import DeleteProfile from "./components/deleteProfile/deleteProfile";
+import HomePage from "./pages/homePage/HomePage";
+import IncorrectPassword from "./components/incorrectPassword/IncorrectPassword";
+import Profile from "./pages/profile/Profile";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Reports from "./pages/reports/Reports";
+import Expense from "./pages/expense/Expense";
+import Income from "./pages/income/Income";
+import Login from "./components/login/LoginPage";
+import Logout from "./components/logout/LogoutPage";
+import Register from "./components/register/RegisterPage";
+import NotificationHome from "./pages/notificationHome/notificationHome";
+import SetUpEMIDueDate from "./pages/notification/emi_setup";
+import OptExpense from "./pages/optExpense/opt_expense";
+import EmiView from "./pages/emiView/emi_view";
+import EmiCalculator from "./pages/emicalculator/EmiCalculator";
+import Aside from "./components/sidebar/newSidebar";
+import ForgotPassword from "./components/login/ForgotPassword";
+import ForgotPasswordOtp from "./components/login/ForgotPasswordOtp";
+import Main from "./Main";
 
 const Layout = ({ loginStatus }) => {
   const [rtl, setRtl] = useState(false)
@@ -61,7 +62,9 @@ const Layout = ({ loginStatus }) => {
               path='/incorrectPassword'
               component={IncorrectPassword}
             ></Route>
-            <Route exact path='/expense' component={Expense}></Route>
+            <Route exact path="/income" component={Income}></Route>
+            <Route exact path="/expense" component={Expense}></Route>
+
             <Route
               exact
               path='/emicalculator'
