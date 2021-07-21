@@ -1,3 +1,7 @@
+/*
+ * Author: Devraj Singh
+ */
+
 import React, { Component } from "react";
 import "./opt_expense.css";
 import OPTSuccess from "./optSuccess";
