@@ -74,7 +74,9 @@ const LogInWithOTP = ({ history }) => {
     if (isValid) {
       try {
         const { url, method } = Routes.api.loginUserWithOtp()
-        const { data } = await axios[method](url, { email })
+        const { data } = await axios[method](url, {
+          email: email.toLowerCase(),
+        })
         if (data.success) {
           Notification(notificationTypes.SUCCESS, 'OTP sent to your Email ID')
           setButtonClicked(true)
@@ -94,7 +96,10 @@ const LogInWithOTP = ({ history }) => {
     if (isValid) {
       try {
         const { url, method } = Routes.api.verifyOtpLogin()
-        const { data } = await axios[method](url, { email, otp })
+        const { data } = await axios[method](url, {
+          email: email.toLowerCase(),
+          otp,
+        })
         if (data.success) {
           Notification(
             notificationTypes.SUCCESS,
