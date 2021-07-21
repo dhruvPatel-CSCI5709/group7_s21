@@ -122,13 +122,16 @@ const LogInWithOTP = ({ history }) => {
 
   return (
     <Container fluid>
-      <Card style={{ width: '22rem', marginTop: '2rem' }}>
+      <Card
+        style={{ width: '22rem', marginTop: '2rem' }}
+        // className='d-flex justify-content-center'
+      >
         <Card.Body>
           <h1 style={{ textAlign: 'center' }} className='primary-color'>
             Login
           </h1>
           <hr />
-          <Form onSubmit={submitHandler}>
+          <Form onSubmit={submitHandler} className='flex-column'>
             {buttonClicked ? (
               <div>
                 <Form.Group className='mt-3'>
@@ -161,19 +164,21 @@ const LogInWithOTP = ({ history }) => {
                 <Col md={4}>
                   {' '}
                   <Button className='mt-2' onClick={clickHandler}>
-                    OTP
+                    Get OTP
                   </Button>
                 </Col>
               </Row>
             )}
 
-            <div className='primary-color mt-3'>
+            <div className='primary-color mt-4 w-100 text-center'>
               <Card.Link href='/login?mode=password'>
                 Login With Password
               </Card.Link>
             </div>
-            <hr />
-            <div style={{ textAlign: 'center' }} className='mt-3'>
+            <div
+              style={{ textAlign: 'center' }}
+              className='mt-3 w-100 text-center'
+            >
               Don't have an account?{' '}
               <Link to='/register' className='primary-color'>
                 Sign Up

@@ -88,7 +88,7 @@ const ForgotPassword = ({ history }) => {
               </h1>
               <hr />
               <Form onSubmit={submitHandler}>
-                <Form.Group className='mt-2'>
+                <Form.Group className='mt-2 w-100'>
                   <Form.Control
                     type='password'
                     placeholder='Enter New Password'
@@ -98,7 +98,7 @@ const ForgotPassword = ({ history }) => {
                 </Form.Group>
                 <div className='error'>{passwordError}</div>
 
-                <Form.Group className='mt-3'>
+                <Form.Group className='mt-3 w-100'>
                   <Form.Control
                     type='password'
                     placeholder='Confirm Password'
@@ -107,14 +107,16 @@ const ForgotPassword = ({ history }) => {
                   />
                 </Form.Group>
                 <div className='error'>{confirmPasswordError}</div>
-                <hr />
-                <div style={{ textAlign: 'center' }} className='my-2'>
-                  Changed your mind?{' '}
+                <div
+                  style={{ textAlign: 'center' }}
+                  className='my-2 mt-3 w-100'
+                >
+                  Changed your mind?
                   <Link to='/login' className='primary-color'>
                     Sign In
                   </Link>
                 </div>
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'center' }} className='w-100'>
                   <Button type='submit' className='mt-3 px-5 btn-primary'>
                     Reset Password
                   </Button>

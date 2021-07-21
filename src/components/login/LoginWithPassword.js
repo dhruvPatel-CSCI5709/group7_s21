@@ -63,7 +63,7 @@ const LogInWithPassword = ({ history }) => {
         })
         if (data.success) {
           Notification(notificationTypes.SUCCESS, 'Login Success!')
-          localStorage.setItem('user', data.data)
+          localStorage.setItem('userId', data.data._id)
           localStorage.setItem('loginStatus', true)
           if (data.token) {
             localStorage.setItem('token', data.token)
@@ -81,15 +81,15 @@ const LogInWithPassword = ({ history }) => {
   }
 
   return (
-    <div>
+    <div className='d-flex justify-content-center'>
       <Card style={{ width: '22rem', marginTop: '2rem' }}>
         <Card.Body>
           <h1 style={{ textAlign: 'center' }} className='primary-color'>
             Login
           </h1>
           <hr />
-          <Form onSubmit={submitHandler}>
-            <Form.Group className='mt-2'>
+          <Form className='justify-content-center' onSubmit={submitHandler}>
+            <Form.Group className='mt-2 w-100'>
               <Form.Control
                 type='text'
                 placeholder='Enter Email'
@@ -98,7 +98,7 @@ const LogInWithPassword = ({ history }) => {
               />
             </Form.Group>
             <div className='error'>{emailError}</div>
-            <Form.Group className='mt-3'>
+            <Form.Group className='mt-3 w-100'>
               <Form.Control
                 type='password'
                 placeholder='Enter Password'
@@ -107,7 +107,8 @@ const LogInWithPassword = ({ history }) => {
               />
             </Form.Group>
             <div className='error'>{passwordError}</div>
-            <div className='mt-3'>
+            <br />
+            <div className='mt-3 w-100 d-flex justify-content-around'>
               <Card.Link href='/login?mode=otp' className='primary-color'>
                 Login With OTP
               </Card.Link>
@@ -115,17 +116,15 @@ const LogInWithPassword = ({ history }) => {
                 Forgot Password
               </Card.Link>
             </div>
-            <hr />
+            <Button type='submit' className='mt-3 px-5 btn-primary'>
+              Login
+            </Button>
             <div style={{ textAlign: 'center' }} className='mt-3'>
               Don't have an account?{' '}
               <Link to='/register' className='primary-color'>
                 Sign Up
               </Link>
             </div>
-
-            <Button type='submit' className='mt-3 px-5 btn-primary'>
-              Login
-            </Button>
           </Form>
         </Card.Body>
       </Card>
