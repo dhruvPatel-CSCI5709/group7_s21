@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { Button, Form, Card, Row, Col, Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './LoginPage.css'
+import Notification from '../../components/Notifications/Notifications'
+import { notificationTypes } from '../../constants'
+import axios, { Routes } from '../../services/axios'
 
 const LogInWithOTP = ({ history }) => {
   const [otp, setOtp] = useState('')
@@ -65,21 +69,49 @@ const LogInWithOTP = ({ history }) => {
     return true
   }
 
-  const submitHandler = (e) => {
-    e.preventDefault()
-    const isValid = formValidator()
+  const clickHandler = async () => {
+    const isValid = otpEmailSubmitValidator()
     if (isValid) {
-      setInitErrorState()
-      localStorage.setItem('loginStatus', true)
-      history.push('/Dashboard')
+      try {
+        const { url, method } = Routes.api.loginUserWithOtp()
+        const { data } = await axios[method](url, { email })
+        if (data.success) {
+          Notification(notificationTypes.SUCCESS, 'OTP sent to your Email ID')
+          setButtonClicked(true)
+        } else {
+          Notification(notificationTypes.ERROR, 'OTP could not be sent')
+        }
+        setInitErrorState()
+      } catch (err) {
+        Notification(notificationTypes.ERROR, err)
+      }
     }
   }
 
-  const clickHandler = () => {
-    const isValid = otpEmailSubmitValidator()
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    const isValid = formValidator()
     if (isValid) {
-      setButtonClicked(true)
-      setInitErrorState()
+      try {
+        const { url, method } = Routes.api.verifyOtpLogin()
+        const { data } = await axios[method](url, { email, otp })
+        if (data.success) {
+          Notification(
+            notificationTypes.SUCCESS,
+            'OTP verified! Login Success!'
+          )
+          if (data.token) {
+            localStorage.setItem('token', data.token)
+          }
+          history.push('/Dashboard')
+          window.location.reload(false)
+        } else {
+          Notification(notificationTypes.ERROR, 'Invalid OTP! Login Failed!')
+        }
+        setInitErrorState()
+      } catch (err) {
+        Notification(notificationTypes.ERROR, err)
+      }
     }
   }
 
@@ -93,7 +125,21 @@ const LogInWithOTP = ({ history }) => {
           <hr />
           <Form onSubmit={submitHandler}>
             {buttonClicked ? (
-              <div>OTP has been sent to your Email ID</div>
+              <div>
+                <Form.Group className='mt-3'>
+                  <Form.Control
+                    type='text'
+                    placeholder='Enter OTP'
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                  />
+                </Form.Group>
+                <div className='error'>{otpError}</div>
+
+                <Button type='submit' className='mt-3 px-5'>
+                  Login
+                </Button>
+              </div>
             ) : (
               <Row>
                 <Col md={8}>
@@ -105,6 +151,7 @@ const LogInWithOTP = ({ history }) => {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </Form.Group>
+                  <div className='error'>{emailError}</div>
                 </Col>
                 <Col md={4}>
                   {' '}
@@ -114,27 +161,19 @@ const LogInWithOTP = ({ history }) => {
                 </Col>
               </Row>
             )}
-            <div className='error'>{emailError}</div>
 
-            <Form.Group className='mt-3'>
-              <Form.Control
-                type='text'
-                placeholder='Enter OTP'
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-              />
-            </Form.Group>
-            <div className='error'>{otpError}</div>
-
-            <div className='mt-3' className='primary-color'>
+            <div className='primary-color mt-3'>
               <Card.Link href='/login?mode=password'>
                 Login With Password
               </Card.Link>
-              <Card.Link href='#'>Resend OTP</Card.Link>
             </div>
-            <Button type='submit' className='mt-3 px-5'>
-              Login
-            </Button>
+            <hr />
+            <div style={{ textAlign: 'center' }} className='mt-3'>
+              Don't have an account?{' '}
+              <Link to='/register' className='primary-color'>
+                Sign Up
+              </Link>
+            </div>
           </Form>
         </Card.Body>
       </Card>

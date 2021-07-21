@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Button, Form, Card } from 'react-bootstrap'
 import './LoginPage.css'
 import { Link } from 'react-router-dom'
+import Notification from '../../components/Notifications/Notifications'
+import { notificationTypes } from '../../constants'
+import axios, { Routes } from '../../services/axios'
 
 const LogInWithPassword = ({ history }) => {
   const [email, setEmail] = useState('')
@@ -31,8 +34,6 @@ const LogInWithPassword = ({ history }) => {
       emailError = 'Email is Required!'
     } else if (email && !validateEmail(email.trim())) {
       emailError = 'Inalid Email ID'
-    } else if (email && validateEmail(email.trim()) && password.length < 8) {
-      passwordError = 'Invalid Credentials!'
     }
 
     if (password.length === 0) {
@@ -47,13 +48,33 @@ const LogInWithPassword = ({ history }) => {
     return true
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()
     if (isValid) {
       setInitErrorState()
       localStorage.setItem('loginStatus', true)
       history.push('/Dashboard')
+      try {
+        const { url, method } = Routes.api.loginUserWithPassword()
+        const { data } = await axios[method](url, { email, password })
+        if (data.success) {
+          Notification(notificationTypes.SUCCESS, 'Login Success!')
+          localStorage.setItem('user', data.data)
+          localStorage.setItem('loginStatus', true)
+          if (data.token) {
+            localStorage.setItem('token', data.token)
+          }
+          history.push('/Dashboard')
+          window.location.reload(false)
+        } else {
+          console.log('Inside else')
+          Notification(notificationTypes.ERROR, data.message)
+        }
+        setInitErrorState()
+      } catch (err) {
+        Notification(notificationTypes.ERROR, err)
+      }
     }
   }
 
@@ -85,10 +106,10 @@ const LogInWithPassword = ({ history }) => {
             </Form.Group>
             <div className='error'>{passwordError}</div>
             <div className='mt-3'>
-              <Card.Link href='#' className='primary-color'>
+              <Card.Link href='/login?mode=otp' className='primary-color'>
                 Login With OTP
               </Card.Link>
-              <Card.Link href='#' className='primary-color'>
+              <Card.Link href='/forgotpassword/otp' className='primary-color'>
                 Forgot Password
               </Card.Link>
             </div>

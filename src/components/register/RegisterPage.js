@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap'
 import uiImg from '../../img/register_img.png'
 import '../login/LoginPage.css'
+import Notification from '../../components/Notifications/Notifications'
+import { notificationTypes } from '../../constants'
+import axios, { Routes } from '../../services/axios'
 
 const RegisterPage = ({ history }) => {
   const [firstName, setFirstName] = useState('')
@@ -96,13 +99,25 @@ const RegisterPage = ({ history }) => {
     return true
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()
     if (isValid) {
-      setInitErrorState()
-      localStorage.setItem('loginStatus', true)
-      history.push('/dashboard')
+      try {
+        setInitErrorState()
+        const name = firstName + ' ' + lastName
+        const { url, method } = Routes.api.registerUser()
+        const { data } = await axios[method](url, { name, email, password })
+
+        if (data.success) {
+          Notification(notificationTypes.SUCCESS, 'Register Successful')
+          history.push('/login')
+        } else {
+          Notification(notificationTypes.ERROR, data.message)
+        }
+      } catch (err) {
+        Notification(notificationTypes.ERROR, err)
+      }
     }
   }
 
