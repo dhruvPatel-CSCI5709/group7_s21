@@ -1,9 +1,14 @@
+/**
+ * Author: Jemis Rameshbhai Zadafiya (B00873589)
+ */
 import React from "react";
 import { Component } from "react";
 import "./EmiCalculator.css";
 import axios, { Routes } from "../../services/axios";
 import Table from 'react-bootstrap/Table'
 
+
+// EMI calculator: Takes Loan Category, Interest rate, Period of Loan, and Amount and gives Monthly EMI, Total Payment, and Total Interest
 export default class EmiCalculator extends Component {
   constructor(props){
     super(props);
