@@ -68,7 +68,6 @@ const LogInWithPassword = ({ history }) => {
           history.push('/Dashboard')
           window.location.reload(false)
         } else {
-          console.log('Inside else')
           Notification(notificationTypes.ERROR, data.message)
         }
         setInitErrorState()
