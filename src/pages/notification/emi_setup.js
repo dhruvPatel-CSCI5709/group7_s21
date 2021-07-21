@@ -70,7 +70,7 @@ export default class SetUpEMIDueDate extends Component {
 
   createEMiDetails = async (userId, userEmail, emiName, emiAmount, emiDueDate) => {
     console.log("Inserting the data for emi dates");
-    const emiDatesApi = 'http://csci-5709-group7.herokuapp.com/api/emidates';
+    const emiDatesApi = 'https://csci-5709-group7.herokuapp.com/api/emidates';
     const emiPayload = {
       'user_id': userId,
       'user_email': userEmail,
