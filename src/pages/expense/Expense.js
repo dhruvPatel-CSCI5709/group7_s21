@@ -1,3 +1,7 @@
+/**
+ * Author: Kirtan Revinbhai Dudhatra
+ * Description: Handles expenses of the user: Add, Delete, and Edit
+ */
 import React, { useState, useEffect } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,6 +18,10 @@ import { notificationTypes } from "../../constants";
 import axios, { Routes } from "../../services/axios";
 import moment from "moment";
 
+/**
+ * Description: Overrides the CSS of material UI
+ * @type {(props?: any) => ClassNameMap<"container"|"root">}
+ */
 const useStyles = makeStyles({
   root: {
     width: "100%",
@@ -23,6 +31,10 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * Description: Column Configuration for showing users' expenses on the page
+ * @type {({id: string, label: string}|{id: string, label: string}|{id: string, label: string, align: string}|{id: string, label: string, align: string}|{id: string, label: string, align: string})[]}
+ */
 const columns = [
   { id: "title", label: "Title" },
   { id: "category", label: "Category" },
@@ -49,6 +61,12 @@ const columns = [
   },
 ];
 
+/**
+ * Description: Generates list of options for select component
+ * @param options
+ * @returns {React.node}
+ * @constructor
+ */
 const Options = ({ options }) => {
   return options.map((option, index) => (
     <option key={option.id} value={option.value}>
@@ -75,6 +93,17 @@ function Expense() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
+  /**
+   * Description: loads data from the database: All expenses by User and Category List of User
+   */
+  useEffect(() => {
+    loadExpenseData();
+    getCategoryList();
+  }, []);
+
+  /**
+   * Description: When user choose to edit particular expense it sets the state of expenseId and allows user to edit the existing expenses.
+   */
   useEffect(() => {
     if (expenseId) {
       const expenseData = rowData.find((row) => row.id === expenseId);
@@ -89,6 +118,9 @@ function Expense() {
     }
   }, [expenseId]);
 
+  /**
+   * Description: When user switches between create expense and view expense component it should erase the existing expense details from the state
+   */
   useEffect(() => {
     if (!showForm) {
       setExpenseId(null);
@@ -100,11 +132,10 @@ function Expense() {
     }
   }, [showForm]);
 
-  useEffect(() => {
-    loadExpenseData();
-    getCategoryList();
-  }, []);
-
+  /**
+   * Description: Retrieves all Expense data of user from database
+   * @returns {Promise<void>}
+   */
   const loadExpenseData = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -118,6 +149,10 @@ function Expense() {
     }
   };
 
+  /**
+   * Description: Retrieves all category list of user from database
+   * @returns {Promise<void>}
+   */
   const getCategoryList = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -131,11 +166,17 @@ function Expense() {
     }
   };
 
+  /**
+   * Description: Creates user defined category and stores into the database via API call.
+   * Flow 1: Check if category name is valid or not
+   * Flow 2: Check if category already exists
+   * Flow 3: Fetches the list of category from the database
+   * @returns {Promise<void>}
+   */
   const createExpenseCategory = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
       : "";
-    console.log(createCategoryName);
     if (
       createCategoryName === null ||
       createCategoryName === "" ||
@@ -166,6 +207,11 @@ function Expense() {
     }
   };
 
+  /**
+   * Description: Creates new expense, data is validated with material-ui then data is stored into db using api.
+   * Params: e: Event
+   * @returns {Promise<void>}
+   */
   const createExpense = async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem("userId")
@@ -192,6 +238,11 @@ function Expense() {
     }
   };
 
+  /**
+   * Description: Allows to edit the existing expense and update into the database
+   * @param e: Event
+   * @returns {Promise<void>}
+   */
   const editExpense = async (e) => {
     e.preventDefault();
     const userId = localStorage.getItem("userId")
@@ -218,6 +269,11 @@ function Expense() {
     }
   };
 
+  /**
+   * Description: Delete the expense using expenseId provided by User
+   * @param expenseId: String
+   * @returns {Promise<void>}
+   */
   const deleteExpense = async (expenseId) => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -232,6 +288,11 @@ function Expense() {
     }
   };
 
+  /**
+   * Description: Checks wheather the category is exist in db or not
+   * @param newCategoryName: String
+   * @returns {boolean}
+   */
   const isCategoryAlreadyExist = (newCategoryName) => {
     if (categoryList) {
       const index = categoryList.findIndex(
@@ -245,6 +306,10 @@ function Expense() {
     return false;
   };
 
+  /**
+   * Description: Prepares rowsList for material UI and click events for edit and delete buttons
+   * @param rows: Array[]
+   */
   const processData = (rows) => {
     const rowsData = rows.map((data, index) => {
       return {
@@ -272,6 +337,9 @@ function Expense() {
     setRowData(rowsData);
   };
 
+  /**
+   * Description: handles switch between create expense and show expenses view
+   */
   const handleClose = () => {
     const { category } = formData;
     categoryList.push({
@@ -281,17 +349,33 @@ function Expense() {
     setShow(false);
   };
 
+  /**
+   * Description: shows create expense page
+   */
   const handleShow = () => setShow(true);
 
+  /**
+   * Handles edit of particular expense using expenseId
+   * @param id: String
+   */
   const handleEdit = (id) => {
     setExpenseId(id);
     setShowForm(true);
   };
 
+  /**
+   * Description: Handles page change in view all expenses
+   * @param event: Event
+   * @param newPage: Integer
+   */
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+  /**
+   * Description: To change number of rows per page in table
+   * @param event: Event
+   */
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
