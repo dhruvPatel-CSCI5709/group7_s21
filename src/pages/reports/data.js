@@ -1,3 +1,6 @@
+/**
+ * Author: Nikunj Shamjibhai Dhola
+ */
 export const monthlyData = [
   {
     income: 4500,
