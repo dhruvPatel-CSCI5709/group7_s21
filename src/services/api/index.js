@@ -150,4 +150,22 @@ export default {
       method: "get",
     };
   },
+  getDataByMonth: (userId) => {
+    return {
+      url: `report/getDataByMonth/${userId}`,
+      method: "post",
+    };
+  },
+  getLastFiveMonthData: (userId) => {
+    return {
+      url: `report/getLastFiveMonthData/${userId}`,
+      method: "get",
+    };
+  },
+  getLastTenDaysData: (userId) => {
+    return {
+      url: `report/getLastTenDaysData/${userId}`,
+      method: "get",
+    };
+  },
 };
