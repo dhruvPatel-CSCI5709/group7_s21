@@ -8,8 +8,8 @@
 ## Files Created as a part of assignment
 
 ### Front-end files:
-*EmiCalculator.js
-*EmiCalculator.css
+* EmiCalculator.js
+* EmiCalculator.css
 
 ### Back-end files:
 * emicalculator.model.js
