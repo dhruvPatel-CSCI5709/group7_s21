@@ -1,3 +1,7 @@
+/**
+ * Author: Dhruv Bharatbhai Patel
+ * Description: Handles incomes of the user: Add, Delete, and Edit
+ */
 import React, { useState, useEffect } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,6 +18,10 @@ import { notificationTypes } from "../../constants";
 import axios, { Routes } from "../../services/axios";
 import moment from "moment";
 
+/**
+ * Description: Overrides the CSS of material UI
+ * @type {(props?: any) => ClassNameMap<"container"|"root">}
+ */
 const useStyles = makeStyles({
   root: {
     width: "100%",
@@ -23,6 +31,10 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * Description: Column Configuration for showing users' incomes on the page
+ * @type {({id: string, label: string}|{id: string, label: string}|{id: string, label: string, align: string}|{id: string, label: string, align: string}|{id: string, label: string, align: string})[]}
+ */
 const columns = [
   { id: "title", label: "Title" },
   { id: "category", label: "Category" },
@@ -49,6 +61,12 @@ const columns = [
   },
 ];
 
+/**
+ * Description: Generates list of options for select component
+ * @param options
+ * @returns {React.node}
+ * @constructor
+ */
 const Options = ({ options }) => {
   return options.map((option, index) => (
     <option key={option.id} value={option.value}>

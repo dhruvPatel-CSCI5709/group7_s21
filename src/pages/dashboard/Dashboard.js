@@ -1,3 +1,7 @@
+/**
+ * Author: Dhruv Bharatbhai Patel
+ * Description: Handles Dashboard of logged in user
+ */
 import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import income_img from "../../assets/incomes.png";
@@ -16,11 +20,17 @@ export default function Dashboard() {
   const [incomes, setIncomes] = useState(null);
   const [expenses, setExpenses] = useState(null);
 
+  /**
+   * Description: changes route to income page
+   */
   const routeChange_income = () => {
     let path = `/income`;
     history.push(path);
   };
 
+  /**
+   * Description: changes route to expense page
+   */
   const routeChange_expense = () => {
     let path = `/expense`;
     history.push(path);
@@ -34,6 +44,9 @@ export default function Dashboard() {
     loadIncomes();
   }, []);
 
+  /**
+   * Description: sets total expenses of user
+   */
   const loadTotalExpense = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -47,6 +60,9 @@ export default function Dashboard() {
     }
   };
 
+  /**
+   * Description: sets total incomes of user
+   */
   const loadTotalIncome = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -60,6 +76,9 @@ export default function Dashboard() {
     }
   };
 
+  /**
+   * Description: loads savings data = {expense-incomes}
+   */
   const loadSavings = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -73,6 +92,9 @@ export default function Dashboard() {
     }
   };
 
+  /**
+   * Description: loads expenses data
+   */
   const loadExpenses = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -86,6 +108,9 @@ export default function Dashboard() {
     }
   };
 
+  /**
+   * Description: loads incomes data
+   */
   const loadIncomes = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")

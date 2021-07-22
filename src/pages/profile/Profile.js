@@ -1,5 +1,8 @@
+/**
+ * Author: Dhruv Bharatbhai Patel
+ * Description: Renders profile page
+ */
 import React from "react";
-
 import "./Profile.css";
 import face from "../../assets/face.jpg";
 import rbcBank from "../../assets/RBCjpg.jpg";
