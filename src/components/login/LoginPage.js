@@ -10,7 +10,8 @@ import { Container, Row, Col } from 'react-bootstrap'
 import './LoginPage.css'
 import LoginWithPassword from './LoginWithPassword'
 import LoginWithOTP from './LoginWithOtp'
-import uiImg from '../../img/login_img.png'
+// import uiImg from '../../img/login_img.png'
+import uiImg from '../../assets/images/login_img.png'
 
 /**
  * Description: LoginPage Functional Component
