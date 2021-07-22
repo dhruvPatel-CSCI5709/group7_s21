@@ -141,6 +141,8 @@ const LoginWithOtp = ({ history }) => {
             notificationTypes.SUCCESS,
             'OTP verified! Login Success!'
           )
+          localStorage.setItem('userId', data.data._id)
+          localStorage.setItem('loginStatus', true)
           if (data.token) {
             localStorage.setItem('token', data.token)
           }
