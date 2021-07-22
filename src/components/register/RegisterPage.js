@@ -1,3 +1,7 @@
+/**
+ * Author: Falgun Manishbhai Makadia (B00874635)
+ * Description: Registration Page Component - For Users to Register themselves on FinCare
+ */
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap'
@@ -7,6 +11,9 @@ import Notification from '../../components/Notifications/Notifications'
 import { notificationTypes } from '../../constants'
 import axios, { Routes } from '../../services/axios'
 
+/**
+ * Description: RegistrationPage Functional Component
+ */
 const RegisterPage = ({ history }) => {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -28,6 +35,11 @@ const RegisterPage = ({ history }) => {
     setPassword2Error('')
   }
 
+  /**
+   * Description: Function to Validate Email using RegEx
+   * @param {*} email
+   * @returns {boolean}
+   */
   const validateEmail = (email) => {
     const regex = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
     if (!regex.test(email)) {
@@ -36,6 +48,11 @@ const RegisterPage = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate if the input is Alphanumeric or not
+   * @param {*} text
+   * @returns {boolean}
+   */
   const validateAlphaNumeric = (text) => {
     const regex = new RegExp(/^[a-zA-Z0-9]+$/i)
     if (!regex.test(text)) {
@@ -44,6 +61,10 @@ const RegisterPage = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Form
+   * @returns {boolean}
+   */
   const formValidator = () => {
     let firstNameError = ''
     let lastNameError = ''
@@ -99,6 +120,10 @@ const RegisterPage = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to handle Form Submit
+   * @param {*} e : Event
+   */
   const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()
