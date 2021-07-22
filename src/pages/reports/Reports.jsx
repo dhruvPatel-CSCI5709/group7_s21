@@ -1,3 +1,7 @@
+/**
+ * Author: Nikunj Shamjibhai Dhola
+ * Description: Report Page: Expense Report By Category, Expense Report By Month, Expense Report by Day, and Print to PDF
+ */
 import React, { useEffect, useRef, useState } from "react";
 import { Button } from "antd";
 import ReactToPrint from "react-to-print";
@@ -15,7 +19,7 @@ import {
   timelineReportMenu,
   chartTypeRadio,
 } from "./configurations";
-import { daysData, monthlyData } from "./data";
+import { monthlyData } from "./data";
 import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import AnimatedNumber from "animated-number-react";
 import axios, { Routes } from "../../services/axios";
@@ -36,12 +40,14 @@ const Reports = () => {
 
   const [dataSets, setDataSets] = useState(null);
 
+  /**
+   * Description: Manages Graph option changes for all type of graphs
+   */
   useEffect(() => {
     if (reportType === reportTypeMenu.constants.CATEGORY) {
       setChartType(chartTypeRadio.constants.BAR);
       const data = monthlyData[month - 1];
       fetchCategorywiseReport(month);
-      // generateCategoryGraph(data);
     }
     if (reportType === reportTypeMenu.constants.TIMELINE) {
       if (timeline === timelineReportMenu.constants.MONTHS) {
@@ -53,6 +59,10 @@ const Reports = () => {
     }
   }, [reportType, month, timeline, dayTimeline]);
 
+  /**
+   * Description: Fetches Categories wise expense report from the database
+   * @param {*} monthIndex
+   */
   const fetchCategorywiseReport = async (monthIndex) => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -69,6 +79,9 @@ const Reports = () => {
     }
   };
 
+  /**
+   * Description: Fetches Expense data of last five month from the database
+   */
   const fetchLastFiveMonthData = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -82,6 +95,9 @@ const Reports = () => {
     }
   };
 
+  /**
+   * Description: Fetches Expense data of last ten days from the database
+   */
   const fetchLastTenDaysData = async () => {
     const userId = localStorage.getItem("userId")
       ? localStorage.getItem("userId")
@@ -95,6 +111,11 @@ const Reports = () => {
     }
   };
 
+  /**
+   * Description: Process the Expense data and generates the Category Graph
+   * @param {*} data
+   * @returns
+   */
   const generateCategoryGraph = (data) => {
     const categoryList = Object.keys(data);
     if (categoryList.length === 0) {
@@ -128,6 +149,11 @@ const Reports = () => {
     });
   };
 
+  /**
+   * Processes the Expense Data and generates the graph
+   * @param {*} data
+   * @returns
+   */
   const generateExpenseReportByMonths = (data) => {
     const monthIndexList = Object.keys(data).sort(
       (a, b) => parseInt(a) - parseInt(b)
@@ -169,6 +195,10 @@ const Reports = () => {
     });
   };
 
+  /**
+   * Description: Processes the expense data and generates graph for days
+   * @param {*} data
+   */
   const generateExpenseReportByDays = (data) => {
     const dayTimeStampList = Object.keys(data)
       .sort((a, b) => parseInt(a) - parseInt(b))
