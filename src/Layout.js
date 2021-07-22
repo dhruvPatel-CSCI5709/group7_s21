@@ -64,6 +64,7 @@ const Layout = ({ loginStatus }) => {
             ></Route>
             <Route exact path="/income" component={Income}></Route>
             <Route exact path="/expense" component={Expense}></Route>
+            <Route exact path="/income" component={Income}></Route>
             <Route
               exact
               path="/emicalculator"

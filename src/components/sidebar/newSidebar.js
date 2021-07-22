@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useIntl } from 'react-intl'
+import React, { useEffect, useState } from "react";
+import { useIntl } from "react-intl";
 import {
   ProSidebar,
   Menu,
@@ -8,7 +8,7 @@ import {
   SidebarHeader,
   SidebarFooter,
   SidebarContent,
-} from 'react-pro-sidebar'
+} from "react-pro-sidebar";
 import {
   FaTachometerAlt,
   FaGem,
@@ -16,13 +16,13 @@ import {
   FaGithub,
   FaRegLaughWink,
   FaHeart,
-} from 'react-icons/fa'
+} from "react-icons/fa";
 // import sidebarBg from "./assets/bg1.jpg";
-import styles from './newSidebar.module.css'
-import c from 'classnames/bind'
-import { useHistory } from 'react-router-dom'
+import styles from "./newSidebar.module.css";
+import c from "classnames/bind";
+import { useHistory } from "react-router-dom";
 
-const cx = c.bind(styles)
+const cx = c.bind(styles);
 
 const Aside = ({
   image,
@@ -32,119 +32,134 @@ const Aside = ({
   handleToggleSidebar,
   loginStatus,
 }) => {
-  const intl = useIntl()
-  const history = useHistory()
-  const path = history.location.pathname.substr(1)
-  const [currentPage, setCurrentPage] = useState(null)
+  const intl = useIntl();
+  const history = useHistory();
+  const path = history.location.pathname.substr(1);
+  const [currentPage, setCurrentPage] = useState(null);
 
   const isActive = (currentPage) => {
-    return currentPage === path.toLowerCase()
-  }
+    return currentPage === path.toLowerCase();
+  };
 
   const setPage = (pagename) => {
-    history.push('/' + pagename)
-    setCurrentPage(pagename)
-  }
+    history.push("/" + pagename);
+    setCurrentPage(pagename);
+  };
 
   useEffect(() => {
     if (loginStatus) {
-      setPage('dashboard')
+      setPage("dashboard");
     }
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    history.listen((location, action) => {
+      console.log("routing...");
+      setCurrentPage(location.pathname.substr(1));
+    });
+  }, [history]);
 
   return (
     <ProSidebar
-      className={cx('side-bar')}
+      className={cx("side-bar")}
       image={false}
       rtl={rtl}
       collapsed={collapsed}
       toggled={toggled}
-      breakPoint='md'
+      breakPoint="md"
       onToggle={handleToggleSidebar}
     >
       <SidebarHeader>
-        <div className={cx('header-title')}>
-          {intl.formatMessage({ id: 'sidebarTitle' })}
+        <div className={cx("header-title")}>
+          {intl.formatMessage({ id: "sidebarTitle" })}
         </div>
       </SidebarHeader>
 
       <SidebarContent>
-        <Menu iconShape='circle'>
+        <Menu iconShape="circle">
           <MenuItem
             icon={<FaTachometerAlt />}
-            onClick={() => setPage('dashboard')}
-            className={isActive('dashboard') ? 'active' : ''}
+            onClick={() => setPage("dashboard")}
+            className={isActive("dashboard") ? "active" : ""}
             suffix={
-              <span className='badge red'>
-                {intl.formatMessage({ id: 'new' })}
+              <span className="badge red">
+                {intl.formatMessage({ id: "new" })}
               </span>
             }
           >
-            {intl.formatMessage({ id: 'dashboard' })}
+            {intl.formatMessage({ id: "dashboard" })}
           </MenuItem>
           <MenuItem
             icon={<FaGem />}
-            onClick={() => setPage('notifications')}
-            className={isActive('notifications') ? 'active' : ''}
+            onClick={() => setPage("notifications")}
+            className={isActive("notifications") ? "active" : ""}
           >
-            {' '}
-            {intl.formatMessage({ id: 'notifications' })}
+            {" "}
+            {intl.formatMessage({ id: "notifications" })}
           </MenuItem>
           <MenuItem
             icon={<FaGem />}
-            onClick={() => setPage('profile')}
-            className={isActive('profile') ? 'active' : ''}
+            onClick={() => setPage("profile")}
+            className={isActive("profile") ? "active" : ""}
           >
-            {' '}
-            {intl.formatMessage({ id: 'profile' })}
+            {" "}
+            {intl.formatMessage({ id: "profile" })}
           </MenuItem>
           <MenuItem
             icon={<FaGem />}
-            onClick={() => setPage('reports')}
-            className={isActive('reports') ? 'active' : ''}
+            onClick={() => setPage("reports")}
+            className={isActive("reports") ? "active" : ""}
           >
-            {' '}
-            {intl.formatMessage({ id: 'reports' })}
+            {" "}
+            {intl.formatMessage({ id: "reports" })}
           </MenuItem>
           <MenuItem
             icon={<FaGem />}
-            onClick={() => setPage('expense')}
-            className={isActive('expense') ? 'active' : ''}
+            onClick={() => setPage("income")}
+            className={isActive("income") ? "active" : ""}
           >
-            {' '}
-            {intl.formatMessage({ id: 'expense' })}
+            {" "}
+            {intl.formatMessage({ id: "income" })}
           </MenuItem>
           <MenuItem
             icon={<FaGem />}
-            onClick={() => setPage('emicalculator')}
-            className={isActive('emicalculator') ? 'active' : ''}
+            onClick={() => setPage("expense")}
+            className={isActive("expense") ? "active" : ""}
           >
-            {' '}
-            {intl.formatMessage({ id: 'emiCalculator' })}
+            {" "}
+            {intl.formatMessage({ id: "expense" })}
           </MenuItem>
           <MenuItem
-            onClick={() => setPage('logout')}
-            className={isActive('logout') ? 'active' : ''}
+            icon={<FaGem />}
+            onClick={() => setPage("emicalculator")}
+            className={isActive("emicalculator") ? "active" : ""}
+          >
+            {" "}
+            {intl.formatMessage({ id: "emiCalculator" })}
+          </MenuItem>
+          <MenuItem
+            onClick={() => setPage("logout")}
+            className={isActive("logout") ? "active" : ""}
             icon={<FaGem />}
           >
-            {' '}
-            {intl.formatMessage({ id: 'logout' })}
+            {" "}
+            {intl.formatMessage({ id: "logout" })}
           </MenuItem>
         </Menu>
       </SidebarContent>
 
-      <SidebarFooter style={{ textAlign: 'center' }}>
+      <SidebarFooter style={{ textAlign: "center" }}>
         <div
-          className='sidebar-btn-wrapper'
+          className="sidebar-btn-wrapper"
           style={{
-            padding: '20px 24px',
+            padding: "20px 24px",
           }}
         >
           Copyright@2021 FinCare
         </div>
       </SidebarFooter>
     </ProSidebar>
-  )
-}
+  );
+};
 
-export default Aside
+export default Aside;
