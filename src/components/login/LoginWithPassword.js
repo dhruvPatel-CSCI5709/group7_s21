@@ -1,3 +1,8 @@
+/**
+ * Author: Falgun Manishbhai Makadia (B00874635)
+ * Description: Login with Password Component - For users to Login to FinCare with their Password
+ * NOTE: By Default Login with Password Page will be loaded
+ */
 import React, { useState } from 'react'
 import { Button, Form, Card } from 'react-bootstrap'
 import './LoginPage.css'
@@ -6,6 +11,9 @@ import Notification from '../../components/Notifications/Notifications'
 import { notificationTypes } from '../../constants'
 import axios, { Routes } from '../../services/axios'
 
+/**
+ * Description: LoginWithPassword Functional Component
+ */
 const LogInWithPassword = ({ history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,11 +21,19 @@ const LogInWithPassword = ({ history }) => {
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
 
+  /**
+   * Description: Function to set Initial Component level State
+   */
   const setInitErrorState = () => {
     setEmailError('')
     setPasswordError('')
   }
 
+  /**
+   * Description: Function to Validate Email using RegEx
+   * @param {*} email
+   * @returns {boolean}
+   */
   const validateEmail = (email) => {
     const regex = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
     if (!regex.test(email)) {
@@ -26,6 +42,10 @@ const LogInWithPassword = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Form
+   * @returns {boolean}
+   */
   const formValidator = () => {
     let emailError = ''
     let passwordError = ''
@@ -48,6 +68,10 @@ const LogInWithPassword = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Handle Form Submission
+   * @param {*} e : Event
+   */
   const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()

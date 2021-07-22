@@ -1,3 +1,8 @@
+/**
+ * Author: Falgun Manishbhai Makadia (B00874635)
+ * Description: Login with OTP Component - For users to Login to FinCare with OTP which will be sent to their registered Email ID
+ * NOTE: By Default Login with Password Page will be loaded - User can click on Login with OTP for Logging in using OTP
+ */
 import React, { useState } from 'react'
 import { Button, Form, Card, Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -6,7 +11,10 @@ import Notification from '../../components/Notifications/Notifications'
 import { notificationTypes } from '../../constants'
 import axios, { Routes } from '../../services/axios'
 
-const LogInWithOTP = ({ history }) => {
+/**
+ * Description: LoginWithOtp Functional Component
+ */
+const LoginWithOtp = ({ history }) => {
   const [otp, setOtp] = useState('')
   const [email, setEmail] = useState('')
   const [buttonClicked, setButtonClicked] = useState(false)
@@ -14,11 +22,19 @@ const LogInWithOTP = ({ history }) => {
   const [otpError, setOtpError] = useState('')
   const [emailError, setEmailError] = useState('')
 
+  /**
+   * Description: Function to set Initial Component level State
+   */
   const setInitErrorState = () => {
     setOtpError('')
     setEmailError('')
   }
 
+  /**
+   * Description: Function to Validate Email using RegEx
+   * @param {*} email
+   * @returns {boolean}
+   */
   const validateEmail = (email) => {
     const regex = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
     if (!regex.test(email)) {
@@ -27,6 +43,11 @@ const LogInWithOTP = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Format of the OTP using RegEx
+   * @param {*} otp
+   * @returns {boolean}
+   */
   const validateOtp = (otp) => {
     const regex = new RegExp(/^[0-9]+$/i)
     if (!regex.test(otp)) {
@@ -35,6 +56,10 @@ const LogInWithOTP = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Form
+   * @returns {boolean}
+   */
   const formValidator = () => {
     let otpError = ''
 
@@ -53,6 +78,10 @@ const LogInWithOTP = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Email Submission for OTP
+   * @returns {boolean}
+   */
   const otpEmailSubmitValidator = () => {
     let emailError = ''
 
@@ -69,6 +98,9 @@ const LogInWithOTP = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Handle click event - Get OTP Button
+   */
   const clickHandler = async () => {
     const isValid = otpEmailSubmitValidator()
     if (isValid) {
@@ -90,6 +122,10 @@ const LogInWithOTP = ({ history }) => {
     }
   }
 
+  /**
+   * Description: Function to Handle Form Submission
+   * @param {*} e : Event
+   */
   const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()
@@ -191,4 +227,4 @@ const LogInWithOTP = ({ history }) => {
   )
 }
 
-export default LogInWithOTP
+export default LoginWithOtp

@@ -1,3 +1,7 @@
+/**
+ * Author: Falgun Manishbhai Makadia (B00874635)
+ * Description: Forgot Password OTP Component - For Users to get OTP on their Registered Email to get started with their Password Reset Process
+ */
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap'
@@ -7,6 +11,9 @@ import Notification from '../../components/Notifications/Notifications'
 import { notificationTypes } from '../../constants'
 import axios, { Routes } from '../../services/axios'
 
+/**
+ * Description: ForgotPasswordOtp Functional Component
+ */
 const ForgotPasswordOtp = ({ history }) => {
   const [otp, setOtp] = useState('')
   const [email, setEmail] = useState('')
@@ -15,10 +22,18 @@ const ForgotPasswordOtp = ({ history }) => {
   const [otpError, setOtpError] = useState('')
   const [emailError, setEmailError] = useState('')
 
+  /**
+   * Description: Function to set Initial Component level State
+   */
   const setInitErrorState = () => {
     setEmailError('')
   }
 
+  /**
+   * Description: Function to Validate Email using RegEx
+   * @param {*} email
+   * @returns {boolean}
+   */
   const validateEmail = (email) => {
     const regex = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
     if (!regex.test(email)) {
@@ -27,6 +42,11 @@ const ForgotPasswordOtp = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Format of the OTP using RegEx
+   * @param {*} otp
+   * @returns {boolean}
+   */
   const validateOtp = (otp) => {
     const regex = new RegExp(/^[0-9]+$/i)
     if (!regex.test(otp)) {
@@ -35,6 +55,10 @@ const ForgotPasswordOtp = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Form
+   * @returns {boolean}
+   */
   const formValidator = () => {
     let otpError = ''
 
@@ -53,6 +77,10 @@ const ForgotPasswordOtp = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Validate Email Submission for OTP
+   * @returns {boolean}
+   */
   const otpEmailSubmitValidator = () => {
     let emailError = ''
 
@@ -69,6 +97,9 @@ const ForgotPasswordOtp = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Handle click event - Get OTP Button
+   */
   const clickHandler = async () => {
     const isValid = otpEmailSubmitValidator()
     if (isValid) {
@@ -90,6 +121,10 @@ const ForgotPasswordOtp = ({ history }) => {
     }
   }
 
+  /**
+   * Description: Function to Handle Form Submission
+   * @param {*} e : Event
+   */
   const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()

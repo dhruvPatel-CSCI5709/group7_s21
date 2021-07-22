@@ -1,3 +1,7 @@
+/**
+ * Author: Falgun Manishbhai Makadia (B00874635)
+ * Description: Forgot Password Component - For Users to Reset their Password
+ */
 import React, { useState } from 'react'
 import { Button, Form, Card, Row, Col, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -7,6 +11,9 @@ import Notification from '../../components/Notifications/Notifications'
 import { notificationTypes } from '../../constants'
 import axios, { Routes } from '../../services/axios'
 
+/**
+ * Description: ForgotPassword Functional Component
+ */
 const ForgotPassword = ({ history }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -14,11 +21,18 @@ const ForgotPassword = ({ history }) => {
   const [passwordError, setPasswordError] = useState('')
   const [confirmPasswordError, setConfirmPasswordError] = useState('')
 
+  /**
+   * Description: Function to set Initial Component level State
+   */
   const setInitErrorState = () => {
     setPasswordError('')
     setConfirmPasswordError('')
   }
 
+  /**
+   * Description: Function to Validate Form
+   * @returns {boolean}
+   */
   const formValidator = () => {
     let passwordError = ''
     let confirmPasswordError = ''
@@ -43,6 +57,10 @@ const ForgotPassword = ({ history }) => {
     return true
   }
 
+  /**
+   * Description: Function to Handle Form Submission
+   * @param {*} e : Event
+   */
   const submitHandler = async (e) => {
     e.preventDefault()
     const isValid = formValidator()
