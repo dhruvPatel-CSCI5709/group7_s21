@@ -1,3 +1,7 @@
+/**
+ * Author: Kirtan Revinbhai Dudhatra
+ * Banner Id: B00863410
+ */
 import React, { Fragment, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import DeleteProfile from "./components/deleteProfile/deleteProfile";
