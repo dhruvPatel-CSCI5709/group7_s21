@@ -1,3 +1,7 @@
+/**
+ * Author: Nikunj Shamjibhai Dhola
+ * Description: Reusable component of Radio
+ */
 import { Radio } from "antd";
 import React from "react";
 

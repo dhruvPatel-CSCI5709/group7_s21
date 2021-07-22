@@ -1,3 +1,11 @@
+/**
+ * Author: Nikunj Shamjibhai Dhola
+ * Description: Reusable component of Dropdown menu
+ * @param {*} value
+ * @param {*} options
+ * @param {*} onChange
+ * @param {*} placeholder
+ */
 import React from "react";
 import { Select } from "antd";
 import { Option } from "antd/lib/mentions";

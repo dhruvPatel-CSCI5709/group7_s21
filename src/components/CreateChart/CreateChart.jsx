@@ -1,3 +1,7 @@
+/**
+ * Author: Nikunj Shamjibhai Dhola
+ * Description: Creates a chart for given datasets and options
+ */
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
@@ -10,7 +14,6 @@ const CreateChart = ({ options, data, type, plugins, keyInfo }) => {
     if (chartInstance) {
       chartInstance.destroy();
     }
-    console.log("Chart Initiate=", keyInfo, data);
     Chart.plugins.unregister(ChartDataLabels);
     // Chart.defaults.scales.xAxis[0].ticks.beginAtZero = true;
     const chartInstanceTemp = new Chart(myChart.current.getContext("2d"), {
