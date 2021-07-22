@@ -455,6 +455,7 @@ function Expense() {
               <Form.Control
                 value={amount}
                 type="number"
+                steps="any"
                 placeholder="Amount"
                 onChange={(e) => setAmount(e.target.value)}
                 required
